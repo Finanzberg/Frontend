@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="FinanzbergLogo.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Finanzberg - HomePage</title>
+    <link rel="stylesheet" href="GeneralStylesheet.css" />
+</head>
+
+<style>
+    :root{
+    --accent_color: #FFD015;
+    --text_color: #112D3B;
+    --backgroundcolor: #242424;
+    }
+    #start{
+        background-image: url('backgroundImg/background (2).jpg');
+        box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.527);
+        background-size: cover;
+        height: 55rem;
+        text-align: center;
+        display: grid;
+    }
+    #startTitel{
+        font-size: 5rem;
+        padding-top: 20rem;
+        font-weight: bold;
+    }
+    #startSubTitel{
+        font-size: 2rem;
+        font-weight: normal;
+    }
+    #startButtons{
+        padding-top: 2.2rem;
+    }
+    #startButtonPri{
+        font-size: 2rem;
+        font-weight: 500;
+        padding-left: 6rem;
+        padding-right: 6rem;
+        margin-right: 2rem;
+    }
+    #startButtonSec{
+        font-size: 2rem;
+        font-weight: 500;
+        padding-left: 7rem;
+        padding-right: 7rem;
+    }
+
+
+    #ourVision{
+        background-color: white;
+        padding: 3rem;
+        padding-left: 6rem;
+        padding-right: 10rem;
+        display: flex;
+    }
+    #ourVisionImg{
+        border-radius: 30px;
+    }
+    #ourVisionTexDiv{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 3rem;
+    }
+    #ourVisionTexTitel{
+        font-size: 3rem;
+        font-weight: 600;
+        color: var(--accent_color);
+    }
+    #ourVisionTex{
+        font-size: 2rem;
+    }
+
+
+    #gettingStarted{
+        display: flex;
+    }
+    #gettingStartedLeft{
+        width: 50%;
+        text-align: center;
+        padding-top: 10rem;
+        padding-bottom: 10rem;
+    }
+    #gettingStartedLeftTitel{
+        font-size: 3rem;
+        font-weight: 600;
+        color: white;
+    }
+    #gettingStartedLeftContent{
+        color: rgba(255, 255, 255, 0.562);
+    }
+    #gettingStartedRight{
+        width: 50%;
+        padding: 7rem;
+        padding-left: 10rem;
+        text-align: left;
+        background-color: #323238;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10rem;
+    }
+    #gettingStartedRightTitel{
+        color: white;
+        font-size: larger;
+        font-weight: 600;
+    }
+    #gettingStartedRightSubtitel{
+        color: white;
+    }
+
+    #features{
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+    #featuresTitle{
+        font-size: 2rem;
+        font-weight: bold;
+        display: flex;
+        color: white;
+        padding: 1rem;
+        padding-left: 4rem;
+    }
+    #featuresTitleSec{
+        font-size: 2rem;
+        padding-left: 1rem;
+        font-weight: bold;
+        color: rgb(161, 161, 161);
+    }
+    #featuresDivs{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    #featuresDiv{
+        width: 30%;
+        height: auto;
+        border-radius: 30px;
+    }
+
+    #signUp{
+        display: flex;
+    }
+    #signUpRight{
+        padding-left: 10rem;
+        padding-top: 20rem;
+    }
+    #signUpRightTitel{
+        font-size: 4rem;
+        font-weight: 550;
+        color: white;
+    }
+    #signUpRightSubtitel{
+        font-size: 2rem;
+        font-weight: normal;
+        color: white;
+    }
+    
+    </style>
+
+<body>
+    <div id="outercontainer">
+        <div id="innercontainer">
+            <!--Header-->
+            <header>
+                <div id="headerLogoDiv">
+                    <img src="FinanzbergLogoNoText.png" height="30rem">
+                    <div id="headerLogoTitel">Finanzberg</div>
+                </div>
+                <div id="headerLinksDiv">
+                    <a href="#gettingStarted" class="headerLink">Getting Startet</a>
+                    <a href="#features" class="headerLink">Features</a>
+                    <a href="#signUp" class="headerLink">Join now</a>
+                    <button class="primaryButtonSmall" id="headerLoginButton" onclick="openModal('loginModal')">Login</button>
+                </div>
+            </header>
+            <!--Content-->
+            <div id="contentdiv">
+                <div id="start">
+                    <div>
+                        <div id="startTitel">Simplify Your Finances</div>
+                        <div id="startSubTitel">Intuitive tools for your money.</div>
+                        <div id="startButtons">
+                            <button id="startButtonPri" onclick="location.href='#signUp'" class="primaryButton">Start Planning</button> 
+                            <button id="startButtonSec" onclick="location.href='#gettingStarted'" class="secondaryButton">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="ourVision">
+                    <img id="ourVisionImg" src="backgroundImg/background (1).jpg">
+                    <div id="ourVisionTexDiv">
+                        <div id="ourVisionTexTitel">Our Vision</div>
+                        <div id="ourVisionTex">Empowering you to make smart financial decisions with cutting-edge technology.</div>
+                    </div>
+                </div>
+                <div id="gettingStarted">
+                    <div id="gettingStartedLeft">
+                        <img src="backgroundImg\background (1).png" alt="">
+                        <div id="gettingStartedLeftTitel">Getting Started</div>
+                        <div id="gettingStartedLeftContent">A quick guide to managing wealth.</div>
+                    </div>
+                    <div id="gettingStartedRight">
+                        <div>
+                            <div id="gettingStartedRightTitel">Create Account</div>
+                            <div id="gettingStartedRightSubtitel">Sign up with basic details</div>
+                        </div>
+                        <div>
+                            <div id="gettingStartedRightTitel">Set Goals</div>
+                            <div id="gettingStartedRightSubtitel">Define financial objectives with Budgeting</div>
+                        </div>
+                       <div>
+                            <div id="gettingStartedRightTitel">Track Expenditure</div>
+                            <div id="gettingStartedRightSubtitel">Monitor expenses easily</div>
+                        </div>
+                        <div>
+                            <div id="gettingStartedRightTitel">Invest Wisely</div>
+                            <div id="gettingStartedRightSubtitel">Manage your investments</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="features">
+                    <div id="featuresTitle"> Features <div id="featuresTitleSec">Intelligent Advice</div></div>
+                    <div id="featuresDivs">
+                        <img id="featuresDiv" src="backgroundImg/background (6).jpg">
+                        <img id="featuresDiv" src="backgroundImg/background (4).jpg">
+                        <img id="featuresDiv" src="backgroundImg/background (5).jpg">
+                    </div>
+                </div>
+
+                <div id="signUp">
+                   <div id="signUpLeft">
+                        <img src="backgroundImg/background (3).jpg">
+                   </div>
+                   <div id="signUpRight">
+                        <div id="signUpRightTitel">Start Your Plan</div>
+                        <div id="signUpRightSubtitel">Join the finance revolution.</div>
+                        <button id="startButtonPri" onclick="openModal('registerModal')" class="primaryButton">Sign Up Now</button> 
+                   </div>
+                </div>
+
+                <!--Login Modal-->
+                <div class="modal" id="loginModal">
+                    <div class="modalTitel">Login</div>
+                    <div><input id="loginEmail" type="email" placeholder="E-Mail"></div>
+                    <div><input id="loginPassword" type="password" placeholder="Passwort"></div>
+                    <button onclick="login()" id="loginButton" class="primaryButton">Login</button>
+                </div>
+                 <!--Register Modal-->
+                <div class="modal" id="registerModal">
+                    <div class="modalTitel">Register</div>
+                    <div><input id="registerName" type="text" placeholder="Name"></div>
+                    <div><input id="registerEmail" type="email" placeholder="E-Mail"></div>
+                    <div><input id="registerPassword" type="password"placeholder="Passwort"></div>
+                    <div>Avatar<input id="registerAvatar" type="file" placeholder="Avatar"></div>
+                    <button onclick="register()"  class="primaryButton">Create Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer>
+        <div id="footerLogoDiv">
+            <div id="footerLogo"> 
+                <img src="FinanzbergLogo.png" height="60rem">
+            </div>
+            <div>Your Wealth, Simplified</div>
+        </div>
+        <div id="footerLinksDiv">
+            <div style="margin-left: 0;">
+                <div class="footerLinkTypeTitel">Projekt</div> 
+                <div><a href="">About</a></div> <!--add link-->
+                <div><a href="">Team</a></div> <!--add link-->
+                <div><a href="">GitHub</a></div> <!--add link-->
+            </div>
+            <div>
+                <div class="footerLinkTypeTitel">Services</div>
+                <div><a href="">Insights</a></div> <!--add link-->
+                <div><a href="">Contracts</a></div> <!--add link-->
+                <div><a href="">Budgeting</a></div> <!--add link-->
+            </div>
+            <div>
+                <div class="footerLinkTypeTitel">Legal</div>
+                <div><a href="">Privacy</a></div> <!--add link-->
+                <div><a href="">Rights</a></div> <!--add link-->
+            </div>
+        </div>
+    </footer>
+    <div id="overlay"></div>
+</body>
+
+<!--Modal logic-->
+<script>
+    const overlay = document.getElementById("overlay")
+
+    overlay.addEventListener('click', ()=>{
+        const modals = document.querySelectorAll('.modal.active')
+        modals.forEach(modal =>{
+            closeModalbyModal(modal)
+        })
+    })
+
+    function openModal(modalId){
+        const modal = document.getElementById(modalId)
+        modal.classList.add('active')
+        overlay.classList.add('active')
+    }
+    function closeModal(modalId){
+        const modal = document.getElementById(modalId)
+        modal.classList.remove('active')
+        overlay.classList.remove('active')
+    }
+    function closeModalbyModal(modal){
+        modal.classList.remove('active')
+        overlay.classList.remove('active')
+    }
+
+    function login(){
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+
+
+        const modals = document.querySelectorAll('.modal.active')
+        modals.forEach(modal =>{
+            closeModalbyModal(modal)
+        })
+    }
+
+    function register(){
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+
+
+        const modals = document.querySelectorAll('.modal.active')
+        modals.forEach(modal =>{
+            closeModalbyModal(modal)
+        })
+    }
+</script>
+
+</html>

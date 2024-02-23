@@ -1,0 +1,188 @@
+/*var*/
+:root{
+    --accent_color: #FFD015;
+    --text_color: #112D3B;
+    --backgroundcolor: #242424;
+}
+
+/*general look and feel*/
+* {
+    font-family: "Poppins", sans-serif;
+    color: var(--text_color);
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/*body framework*/
+body {
+    margin: 0;
+    padding: 0;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#outercontainer {
+    min-height: 100%;
+    background-color: var(--backgroundcolor);
+}
+#contentdiv{
+    display: grid;
+}
+
+/*header*/
+header {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    padding-right: 3rem;
+    padding-left: 3rem;
+}
+    /*logo*/
+    #headerLogoDiv{
+        display: flex;
+        gap: 1rem;
+    }
+    #headerLogoTitel{
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    /*links*/
+    #headerLinksDiv{
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+    }
+    .headerLink{
+        font-weight: 600;
+    }
+    #headerLoginButton{
+        width: 5rem;
+        height: 2rem;
+    }
+
+/*footer*/
+footer {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4rem;
+}
+    /*Fotter Logo*/
+    #footerLogoDiv{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    #footerLogo{
+        display: flex;
+    }
+
+    /*Fotter Links*/
+    #footerLinksDiv{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10rem;
+    }
+    
+    .footerLinkTypeTitel{
+        font-weight: bold;
+    }
+
+
+/*Presets*/
+    /*buttons*/
+    .primaryButton{
+        background-color: var(--accent_color);
+        font-size: large;
+        font-weight: 700;
+        padding: 0.4rem;
+        border-radius: 0.5rem;
+        border-color: transparent;
+    }
+    .primaryButtonSmall{
+        background-color: var(--accent_color);
+        border-radius: 0.5rem;
+        border-color: transparent;
+    }
+
+    .secondaryButtonSmall{
+        background-color: rgba(0, 0, 0, 0.11);
+        border-radius: 0.5rem;
+        border-color: transparent;
+    }
+    .secondaryButton{
+        background-color: rgba(0, 0, 0, 0.11);
+        font-size: large;
+        font-weight: 700;
+        padding: 0.4rem;
+        border-radius: 0.5rem;
+        border-color: transparent;
+    }
+
+
+    /*modal*/
+    input{
+        border-radius: 0.5rem;
+        padding: 0.4rem;
+        font-size: large;
+        width: 97%;
+    }
+    #loginButton{
+        width: 25rem;
+    }
+    .modalTitel{
+        font-weight: bold;
+        text-align: center;
+        font-size: 2rem;
+    }
+    .modal{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%) scale(0);
+        transition: 200ms ease-in-out;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        padding: 5rem;
+        padding-top: 3rem;
+        gap: 1rem;
+        background-color: white;
+        border-radius: 0.5rem;
+    }
+    .modal.active {
+        transform: translate(-50%,-50%) scale(1);
+    }
+
+    #overlay{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #00000077;
+        pointer-events: none;
+        transition: 200ms ease-in-out;
+        opacity: 0;
+    }
+    #overlay.active {
+        background-color: #00000077;
+        opacity: 1;
+        pointer-events: all;
+    }
