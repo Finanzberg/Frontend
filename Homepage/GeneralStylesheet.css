@@ -186,3 +186,11 @@ footer {
         opacity: 1;
         pointer-events: all;
     }
+    #loginErrorMassage{
+        font-weight: 600;
+        color: red;
+    }
+    #registerErrorMassage{
+        font-weight: 600;
+        color: red;
+    }
