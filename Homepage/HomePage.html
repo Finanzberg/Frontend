@@ -394,7 +394,7 @@
 
         let json = {
             "email": email,
-            "passwort": password
+            "password": password
         }
         let jsonStr = JSON.stringify(json);
         console.log(jsonStr)
@@ -444,11 +444,11 @@
                     setCookie("session", j.session)
                     setCookie("user", JSON.stringify(j.user))
                     //weiterleitung
-                }
-                const modals = document.querySelectorAll('.modal.active')
-                modals.forEach(modal => {
+                    const modals = document.querySelectorAll('.modal.active')
+                    modals.forEach(modal => {
                     closeModalbyModal(modal)
-                })
+                    })
+                }
             } else {
                 document.getElementById('registerButton').innerHTML = 'Create Account'
                 document.getElementById('registerErrorMassage').innerHTML = 'failed to register'
