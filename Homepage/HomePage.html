@@ -440,9 +440,9 @@
             if (status === 201) {
                 let j = JSON.parse(response);
                 if (j.session != null) {
-                    document.getElementById('registerButton').innerHTML = 'Create Account'
                     setCookie("session", j.session)
                     setCookie("user", JSON.stringify(j.user))
+                    document.getElementById('registerButton').innerHTML = 'Create Account'
                     //weiterleitung
                     const modals = document.querySelectorAll('.modal.active')
                     modals.forEach(modal => {

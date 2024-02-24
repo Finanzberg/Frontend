@@ -9,6 +9,6 @@ function send(method, apiSection, data, callback) {
         }
     }
     xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.setRequestHeader("Cookie", "session=" + getCookie("session"));
+    xhr.withCredentials = true;
     xhr.send(data);
 }
