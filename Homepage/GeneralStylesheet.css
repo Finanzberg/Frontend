@@ -1,6 +1,7 @@
 /*var*/
 :root{
     --accent_color: #FFD015;
+    --accent_color_hover: #eac11b;
     --text_color: #112D3B;
     --backgroundcolor: #242424;
 }
@@ -14,6 +15,9 @@
 a {
     text-decoration: none;
 }
+a:hover{
+    font-weight: 450;
+}
 
 
 /*body framework*/
@@ -22,7 +26,7 @@ body {
     padding: 0;
     background-size: 100%;
     background-repeat: no-repeat;
-    overflow-x: hidden;
+    
     height: 100%;
 }
 
@@ -51,7 +55,10 @@ header {
     padding: 1rem;
     padding-right: 3rem;
     padding-left: 3rem;
-    
+    padding-left: 3rem;   
+}
+#headerHamburger{
+    display: none;        
 }
     /*logo*/
     #headerLogoDiv{
@@ -118,16 +125,25 @@ footer {
         border-radius: 0.5rem;
         border-color: transparent;
     }
+    .primaryButton:hover{
+        background-color: var(--accent_color_hover);
+    }
     .primaryButtonSmall{
         background-color: var(--accent_color);
         border-radius: 0.5rem;
         border-color: transparent;
+    }
+    .primaryButtonSmall:hover{
+        background-color: var(--accent_color_hover);
     }
 
     .secondaryButtonSmall{
         background-color: rgba(0, 0, 0, 0.11);
         border-radius: 0.5rem;
         border-color: transparent;
+    }
+    .secondaryButton:hover{
+        background-color: rgba(0, 0, 0, 0.194);
     }
     .secondaryButton{
         background-color: rgba(0, 0, 0, 0.11);
@@ -136,6 +152,9 @@ footer {
         padding: 0.4rem;
         border-radius: 0.5rem;
         border-color: transparent;
+    }
+    .secondaryButton:hover{
+        background-color: rgba(0, 0, 0, 0.194);
     }
 
 
