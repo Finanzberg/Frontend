@@ -1,4 +1,4 @@
-let api = "http://localhost:8080/api/v1/";
+let api = "https://api.finanzberg.online/api/v1/";
 
 function send(method, apiSection, data, callback) {
     let xhr = new XMLHttpRequest();
