@@ -1,4 +1,3 @@
-
 function setCookie(name, value, minutes) {
     let cookie = name + "=" + (value || "") + ';path=/;';
 

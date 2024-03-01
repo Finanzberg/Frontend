@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Finanzberg - Landing Page</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="resources/images/general/logo/Finanzberg_logo.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="resources/js/backend_connection.js"></script>
+    <script src="resources/js/hash.js"></script>
+    <script src="resources/js/cookies.js"></script>
+    <link rel="stylesheet" href="resources/css/GeneralStylesheet.css" />
+    <link rel="stylesheet" href="resources/css/landingpage.css" />
+</head>
+
+<body>
+    <div id="outercontainer">
+        <div id="innercontainer">
+            <!--Header-->
+            <header>
+                <div id="header_logo_div">
+                    <img src="resources/images/general/logo/Finanzberg_logo_NoText.png" height="30rem">
+                    <div id="header_logo_titel">Finanzberg</div>
+                </div>
+                <div id="header_links_div">
+                    <a href="#gettingStarted" class="header_link">Getting Started</a>
+                    <a href="#features" class="header_link">Features</a>
+                    <a href="#signUp" class="header_link">Join now</a>
+                    <div>
+                        <button id="header_link_login_button" onclick="openModal('loginModal')">Login</button>
+                    </div>
+                </div>
+                <div>
+                    <label class="hamburger_menu_button">
+                        <input type="checkbox">
+                    </label>
+                </div>
+                
+            </header>
+
+            <div class="hamburger_menu">
+                <a href="#gettingStarted" class="headerLink">Getting Started</a>
+                <a href="#features" class="headerLink">Features</a>
+                <a href="#signUp" class="headerLink">Join now</a>
+                <button class="primaryButtonSmall" id="headerHaburgerLoginButton"
+                    onclick="openModal('loginModal')">Login
+                </button>
+            </div>
+            
+            <!--Content-->
+            <div id="contentdiv">
+                <div id="start">
+                    <div>
+                        <div id="startTitel">Simplify Your Finances</div>
+                        <div id="startSubTitel">Intuitive tools for your money.</div>
+                        <div id="startButtons">
+                            <button id="startButtonPri" onclick="location.href='#signUp'" class="primaryButton">Start
+                                Planning
+                            </button>
+                            <button id="startButtonSec" onclick="location.href='#gettingStarted'"
+                                class="secondaryButton">Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="ourVision">
+                    <img id="ourVisionImg" src="resources/images/landingPage/our_vision.jpg">
+                    <div id="ourVisionTexDiv">
+                        <div id="ourVisionTexTitel">Our Vision</div>
+                        <div id="ourVisionTex">Empowering you to make smart financial decisions with cutting-edge
+                            technology.
+                        </div>
+                    </div>
+                </div>
+                <div id="gettingStarted">
+                    <div id="gettingStartedLeft">
+                        <img src="resources/images/landingPage/getting_started.png" alt="">
+                        <div id="gettingStartedLeftTitel">Getting Started</div>
+                        <div id="gettingStartedLeftContent">A quick guide to managing wealth.</div>
+                    </div>
+                    <div id="gettingStartedRight">
+                        <div>
+                            <div id="gettingStartedRightTitel">Create Account</div>
+                            <div id="gettingStartedRightSubtitel">Sign up with basic details</div>
+                        </div>
+                        <div>
+                            <div id="gettingStartedRightTitel">Set Goals</div>
+                            <div id="gettingStartedRightSubtitel">Define financial objectives with Budgeting</div>
+                        </div>
+                        <div>
+                            <div id="gettingStartedRightTitel">Track Expenditure</div>
+                            <div id="gettingStartedRightSubtitel">Monitor expenses easily</div>
+                        </div>
+                        <div>
+                            <div id="gettingStartedRightTitel">Invest Wisely</div>
+                            <div id="gettingStartedRightSubtitel">Manage your investments</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="features">
+                    <div id="featuresTitle"> Features
+                        <div id="featuresTitleSec">Intelligent Advice</div>
+                    </div>
+                    <div id="featuresDivs">
+                        <img id="featuresDiv" src="resources/images/landingPage/features_1.jpg">
+                        <img id="featuresDiv" src="resources/images/landingPage/features_2.jpg">
+                        <img id="featuresDiv" src="resources/images/landingPage/features_3.jpg">
+                    </div>
+                </div>
+
+                <div id="signUp">
+                    <div id="signUpLeft">
+                        <img id="signUpLeftImg" src="resources/images/landingPage/signUp.jpg">
+                    </div>
+                    <div id="signUpRight">
+                        <div id="signUpRightTitel">Start Your Plan</div>
+                        <div id="signUpRightSubtitel">Join the finance revolution.</div>
+                        <button id="signUpButtonPri" onclick="openModal('registerModal')" class="primaryButton">Sign Up
+                            Now
+                        </button>
+                    </div>
+                </div>
+
+                <!--Login Modal-->
+                <div class="modal" id="loginModal">
+                    <div class="modalTitel">Login</div>
+                    <div><input id="loginEmail" type="email" placeholder="E-Mail"></div>
+                    <div><input id="loginPassword" type="password" placeholder="Passwort"></div>
+                    <button onclick="login()" id="loginButton" class="primaryButton">Login</button>
+                    <div id="loginErrorMassage"></div>
+                    <div id="loginMassage"></div>
+                </div>
+                <!--Register Modal-->
+                <div class="modal" id="registerModal">
+                    <div class="modalTitel">Register</div>
+                    <div><input id="registerName" type="text" placeholder="Name"></div>
+                    <div><input id="registerEmail" type="email" placeholder="E-Mail"></div>
+                    <div><input id="registerPassword" type="password" placeholder="Passwort"></div>
+                    <div>Avatar<input id="registerAvatar" type="file" placeholder="Avatar" accept="image/*"></div>
+                    <button onclick="register()" id="registerButton" class="primaryButton">Create Account</button>
+                    <div id="registerErrorMassage"></div>
+                    <div id="registerMassage"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer>
+        <div id="footer_logo_div">
+            <div id="footer_logo">
+                <img src="resources/images/general/logo/Finanzberg_logo.png" height="60rem">
+            </div>
+            <div>Your Wealth, Simplified</div>
+        </div>
+        <div id="footer_links_div">
+            <div style="margin-left: 0;">
+                <div class="footer_links_header">Projekt</div>
+                <div><a href="https://github.com/Finanzberg">About</a></div>
+                <div><a href="https://github.com/orgs/Finanzberg/people">Team</a></div>
+                <div><a href="https://github.com/Finanzberg">GitHub</a></div>
+            </div>
+            <div>
+                <div class="footer_links_header">Services</div>
+                <div><a onclick="openModal('loginModal')">Insights</a></div>
+                <div><a onclick="openModal('loginModal')">Contracts</a></div>
+                <div><a onclick="openModal('loginModal')">Budgeting</a></div>
+            </div>
+            <div>
+                <div class="footer_links_header">Info & Legal</div>
+                <div><a href="https://status.finanzberg.online/" target="_blank">Status</a></div>
+                <div><a href="references/privacy.html">Privacy</a></div>
+                <div><a href="references/privacy.html">Rights</a></div>
+            </div>
+        </div>
+    </footer>
+    <div id="overlay"></div>
+</body>
+
+
+<script>
+    //model logic
+    const fileInput = document.getElementById('registerAvatar')
+    let avatar = "blank-profile-picture.png";
+    fileInput.addEventListener('change', async (event) => {
+        const files = event.srcElement.files;
+
+        const filePromises = Object.entries(files).map(item => {
+            return new Promise((resolve, reject) => {
+                const [index, file] = item
+                const reader = new FileReader();
+                reader.readAsBinaryString(file);
+                if (file.type.match('image.*')) {
+                    document.getElementById('registerErrorMassage').innerHTML = ''
+                    reader.onload = function (event) {
+                        avatar = `data:${file.type};base64,${btoa(event.target.result)}`
+                        // do sth
+
+                        resolve()
+                    };
+                    reader.onerror = function () {
+                        console.log("can't read the file");
+                        reject()
+                    };
+                } else {
+                    document.getElementById('registerErrorMassage').innerHTML = 'pls select img'
+                }
+            })
+        })
+    })
+    const overlay = document.getElementById("overlay")
+
+    overlay.addEventListener('click', () => {
+        const modals = document.querySelectorAll('.modal.active')
+        modals.forEach(modal => {
+            closeModalbyModal(modal)
+        })
+    })
+
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId)
+        modal.classList.add('active')
+        overlay.classList.add('active')
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId)
+        modal.classList.remove('active')
+        overlay.classList.remove('active')
+    }
+
+    function closeModalbyModal(modal) {
+        modal.classList.remove('active')
+        overlay.classList.remove('active')
+    }
+
+    function login() {
+        document.getElementById('loginButton').innerHTML = '<img src="loading.gif" width="20rem">'
+        document.getElementById('loginErrorMassage').innerHTML = ''
+
+        let email = document.getElementById('loginEmail').value;
+        let password = document.getElementById('loginPassword').value;
+        password = SHA256(password);
+
+        let json = {
+            "email": email,
+            "password": password
+        }
+        let jsonStr = JSON.stringify(json);
+        console.log(jsonStr)
+        send("POST", "account/auth", jsonStr, function (response, status) {
+            if (status === 200) {
+                let j = JSON.parse(response);
+                if (j.session != null) {
+                    setCookie("session", j.session)
+                    setCookie("user", JSON.stringify(j.user))
+                    document.getElementById('loginButton').innerHTML = 'Loging'
+                    location.href = "references/finance_pages/insight_overview.html";
+                }
+                const modals = document.querySelectorAll('.modal.active')
+                modals.forEach(modal => {
+                    closeModalbyModal(modal)
+                })
+            } else {
+                document.getElementById('loginButton').innerHTML = 'Loging'
+                document.getElementById('loginErrorMassage').innerHTML = 'username or password wrong'
+            }
+        })
+    }
+
+    function register() {
+        document.getElementById('registerButton').innerHTML = '<img src="loading.gif" width="20rem">'
+        document.getElementById('registerErrorMassage').innerHTML = ''
+
+        let name = document.getElementById('registerName').value;
+        let email = document.getElementById('registerEmail').value;
+        let password = document.getElementById('registerPassword').value;
+        password = SHA256(password);
+
+        let json = {
+            "name": name,
+            "email": email,
+            "password": password,
+            "avatar": avatar,
+        }
+
+        let jsonStr = JSON.stringify(json);
+        send("POST", "account/create", jsonStr, function (response, status) {
+            if (status === 201) {
+                let j = JSON.parse(response);
+                if (j.session != null) {
+                    setCookie("session", j.session)
+                    setCookie("user", JSON.stringify(j.user))
+                    document.getElementById('registerButton').innerHTML = 'Create Account'
+                    location.href = "references/finance_pages/insight_overview.html";
+                    const modals = document.querySelectorAll('.modal.active')
+                    modals.forEach(modal => {
+                        closeModalbyModal(modal)
+                    })
+                }
+            } else {
+                document.getElementById('registerButton').innerHTML = 'Create Account'
+                document.getElementById('registerErrorMassage').innerHTML = 'failed to register'
+            }
+        })
+    }
+</script>
+
+</html>

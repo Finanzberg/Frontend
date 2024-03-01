@@ -1,0 +1,316 @@
+:root {
+    --accent_color: #FFD015;
+    --text_color: #0c1f29;
+    --backgroundcolor: #242424;
+}
+
+#start {
+    background-image: url('../images/landingPage/start.jpg');
+    box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.527);
+
+    background-size: cover;
+    height: 55rem;
+    text-align: center;
+    display: grid;
+}
+
+#startTitel {
+    font-size: 5rem;
+    padding-top: 20rem;
+    font-weight: bold;
+}
+
+#startSubTitel {
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+#startButtons {
+    padding-top: 2.2rem;
+}
+
+#startButtonPri {
+    font-size: 2rem;
+    font-weight: 500;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    margin-right: 2rem;
+}
+
+#startButtonSec {
+    font-size: 2rem;
+    font-weight: 500;
+    padding-left: 7rem;
+    padding-right: 7rem;
+}
+
+
+#ourVision {
+    background-color: white;
+    padding: 3rem;
+    padding-left: 6rem;
+    padding-right: 10rem;
+    display: flex;
+}
+
+#ourVisionImg {
+    width: 40%;
+    border-radius: 30px;
+}
+
+#ourVisionTexDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 3rem;
+}
+
+#ourVisionTexTitel {
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--accent_color);
+}
+
+#ourVisionTex {
+    font-size: 2rem;
+}
+
+
+#gettingStarted {
+    display: flex;
+}
+
+#gettingStartedLeft {
+    width: 50%;
+    text-align: center;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+}
+
+#gettingStartedLeftTitel {
+    font-size: 3rem;
+    font-weight: 600;
+    color: white;
+}
+
+#gettingStartedLeftContent {
+    color: rgba(255, 255, 255, 0.562);
+}
+
+#gettingStartedRight {
+    width: 50%;
+    padding: 7rem;
+    padding-left: 10rem;
+    text-align: left;
+    background-color: #323238;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10rem;
+}
+
+#gettingStartedRightTitel {
+    color: white;
+    font-size: larger;
+    font-weight: 600;
+}
+
+#gettingStartedRightSubtitel {
+    color: white;
+}
+
+#features {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+#featuresTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    color: white;
+    padding: 1rem;
+    padding-left: 4rem;
+}
+
+#featuresTitleSec {
+    font-size: 2rem;
+    padding-left: 1rem;
+    font-weight: bold;
+    color: rgb(161, 161, 161);
+}
+
+#featuresDivs {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#featuresDiv {
+    width: 30%;
+    height: auto;
+    border-radius: 30px;
+}
+
+#signUp {
+    display: flex;
+}
+
+#signUpRight {
+    padding-left: 10rem;
+    padding-top: 20rem;
+}
+
+#signUpRightTitel {
+    font-size: 4rem;
+    font-weight: 550;
+    color: white;
+}
+
+#signUpRightSubtitel {
+    font-size: 2rem;
+    font-weight: normal;
+    color: white;
+}
+
+#signUpButtonPri {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+}
+
+/*Presets*/
+/*buttons*/
+.primaryButton {
+    background-color: var(--accent_color);
+    font-size: 14;
+    font-weight: 700;
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+    border-color: transparent;
+}
+
+.primaryButton:hover {
+    background-color: var(--accent_color_hover);
+}
+
+.secondaryButtonSmall {
+    background-color: rgba(0, 0, 0, 0.11);
+    border-radius: 0.5rem;
+    border-color: transparent;
+}
+
+.secondaryButton:hover {
+    background-color: rgba(0, 0, 0, 0.194);
+}
+
+.secondaryButton {
+    background-color: rgba(0, 0, 0, 0.11);
+    font-size: large;
+    font-weight: 700;
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+    border-color: transparent;
+}
+
+.secondaryButton:hover {
+    background-color: rgba(0, 0, 0, 0.194);
+}
+
+
+/*modal*/
+input {
+    border-radius: 0.5rem;
+    padding: 0.4rem;
+    font-size: large;
+    width: 97%;
+}
+
+#loginButton {
+    width: 25rem;
+}
+
+.modalTitel {
+    font-weight: bold;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+    padding-top: 3rem;
+    gap: 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #00000077;
+    pointer-events: none;
+    transition: 200ms ease-in-out;
+    opacity: 0;
+}
+
+#overlay.active {
+    background-color: #00000077;
+    opacity: 1;
+    pointer-events: all;
+}
+
+#loginErrorMassage {
+    font-weight: 600;
+    color: red;
+}
+
+#registerErrorMassage {
+    font-weight: 600;
+    color: red;
+}
+
+@media screen and (max-width: 1100px) {
+    #featuresDivs {
+        flex-direction: column;
+        margin-top: 2rem;
+        gap: 2rem;
+    }
+
+    #featuresDiv {
+        width: 70%;
+        margin-left: 15%;
+    }
+
+    #signUp {
+        display: block;
+        width: 100%;
+    }
+
+    #signUpLeft {
+        display: none;
+    }
+
+    #signUpRight {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("../images/landingPage/signUp.jpg");
+        background-size: cover;
+        padding-top: 3rem;
+        padding-bottom: 10rem;
+        text-align: center;
+        padding-bottom: 20rem;
+        width: 100%;
+    }
+}

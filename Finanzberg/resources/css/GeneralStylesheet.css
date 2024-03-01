@@ -1,0 +1,211 @@
+/*The general Stylesheets that is used everywere for header, footer, body printing, textfont*/
+:root {
+    --accent_color: #FFD015;
+    --accent_color_hover: #eac11b;
+    --text_colore: #0c1f29;
+    --backgroundcolor: #242424;
+    --selectionColor: rgba(255, 255, 255, 0.5);
+    --headerBackgroundcolor: rgba(255, 255, 255, 0.959);
+    --footerBackgroundcolor: white;
+    --font-family: "Poppins", sans-serif;
+}
+
+/*general look and feel*/
+* {
+    font-family: var(--font-family);
+    color: var(--text_colore);
+
+}
+
+::selection {
+    background: var(--selectionColor);
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    font-weight: 450;
+}
+
+
+/*body framework*/
+body {
+    margin: 0;
+    padding: 0;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#outercontainer {
+    min-height: 100%;
+    background-color: var(--backgroundcolor);
+}
+
+#contentdiv {
+    display: grid;
+}
+
+/*header*/
+header {
+    position: sticky;
+    top: 0;
+    background-color: var(--headerBackgroundcolor);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: .8%;
+    padding-right: 1%;
+    padding-left: 1%;
+    z-index: 100;
+}
+
+/*logo*/
+#header_logo_div {
+    display: flex;
+    gap: 10%;
+}
+
+#header_logo_titel {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/*links*/
+#header_links_div {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.header_link {
+    font-weight: 600;
+}
+
+.header_link:hover {
+    font-weight: 650;
+}
+
+#header_link_login_button {
+    width: 5rem;
+    height: 2rem;
+    background-color: var(--accent_color);
+    border-radius: 0.5rem;
+    border-color: transparent;
+}
+
+#header_link_login_button:hover {
+    background-color: var(--accent_color_hover);
+}
+
+:root{
+    --bar-widh: 3rem;
+    --bar-height: .5rem;
+    --hamburger-gap: .4rem;
+    --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+    --x-width: calc(var(--hamburger-height) * 1.414213562);
+}
+
+.hamburger_menu_button{
+    display: flex;
+    flex-direction: column;
+    gap: var(--hamburger-gap);
+    cursor: pointer;
+}
+
+.hamburger_menu_button::before, .hamburger_menu_button::after, .hamburger_menu_button input{
+    content: "";
+    width: var(--bar-widh);
+    height: var(--bar-height);
+    background-color: var(--text_colore);
+    border-radius: 9999px;
+    transform-origin: right center;
+    transition: opacity 200ms ease-in-out, width 200ms ease-in-out, rotate  200ms ease-in-out, translate  200ms ease-in-out;
+}
+
+.hamburger_menu_button input{
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+}
+
+.hamburger_menu_button:has(input:checked)::before {
+    rotate: -45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--bar-height)/ -2);
+} 
+
+.hamburger_menu_button:has(input:checked)::after {
+    rotate: 45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--bar-height)/ 2);
+} 
+
+.hamburger_menu{
+    display: none;
+}
+
+.hamburger_menu_button:has(input:checked)+ .hamburger_menu {
+    display: flex;
+    color: white;
+    flex-direction: column;
+} 
+
+.hamburger_menu_button input:checked{
+    opacity: 0;
+    width: 0;
+}
+
+
+/*footer*/
+footer {
+    background-color: var(--footerBackgroundcolor);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4rem;
+}
+
+/*Fotter Logo*/
+#footer_logo_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#footer_logo {
+    display: flex;
+}
+
+/*Fotter Links*/
+#footer_links_div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10rem;
+}
+
+.footer_links_header {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 1100px) {
+    #header_hamburger_menu_button_div {
+        display: block;
+    }
+
+    #header_links_div {
+        display: none;
+    }
+}
