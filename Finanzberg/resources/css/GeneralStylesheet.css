@@ -106,6 +106,7 @@ header {
     background-color: var(--accent_color_hover);
 }
 
+/*hamburger menu*/
 :root{
     --bar-widh: 3rem;
     --bar-height: .5rem;
@@ -151,7 +152,14 @@ header {
     translate: 0 calc(var(--bar-height)/ 2);
 } 
 
-.hamburger_menu{
+#hamburger_menu{
+    flex-direction: column;
+    text-align: center;
+    padding-top: 1rem;
+    gap: 1rem;
+    position: sticky;
+    top: calc((.8%)*2 + var(--hamburger-height)) ;
+    background-color: var(--headerBackgroundcolor);
     display: none;
 }
 
@@ -166,6 +174,18 @@ header {
     width: 0;
 }
 
+#header_links_div_small{
+    display: none;
+}
+
+#headerHaburgerLoginButton{
+    background-color: var(--accent_color);
+    font-size: 14;
+    font-weight: 700;
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+    border-color: transparent;
+}
 
 /*footer*/
 footer {
@@ -200,12 +220,51 @@ footer {
     font-weight: bold;
 }
 
+/*buttons*/
+.primaryButton {
+    background-color: var(--accent_color);
+    font-size: 14;
+    font-weight: 700;
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+    border-color: transparent;
+}
+
+.primaryButton:hover {
+    background-color: var(--accent_color_hover);
+}
+
+.secondaryButton {
+    background-color: transparent;
+    border-color: #24242459;
+    border-radius: 1px;
+    font-size: large;
+    font-weight: 700;
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+    border-style: solid;
+}
+
+.secondaryButton:hover {
+    background-color: rgba(0, 0, 0, 0.062);
+}
+
 @media screen and (max-width: 1100px) {
-    #header_hamburger_menu_button_div {
+    #header_links_div_small{
         display: block;
     }
-
     #header_links_div {
-        display: none;
+        display: none;  
+    }
+}
+
+@media screen and (max-width: 900px) {
+    /*footer change*/
+    #footer_links_div {
+        display: grid;
+        gap: 1.5rem;
+    }
+    #footer_logo_div {
+        display: block;
     }
 }

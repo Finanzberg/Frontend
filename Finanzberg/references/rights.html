@@ -1,59 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy</title>
+    <title>Finanzberg - Landing Page</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="resources/images/general/logo/Finanzberg_logo.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="../resources/js/backend_connection.js"></script>
+    <script src="../resources/js/hash.js"></script>
+    <script src="../resources/js/cookies.js"></script>
+    <link rel="stylesheet" href="../resources/css/GeneralStylesheet.css" />
+    <link rel="stylesheet" href="../resources/css/landingpage.css" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            color: #000;
+        #outercontainer{
+            background-color: white;
         }
+        #content {
+            margin: 20px;
+        }
+
         h1 {
             color: #000000;
-            border-bottom: 2px solid #0056b3;
+            border-bottom: 2px solid rgb(161, 161, 161);
             padding-bottom: 10px;
         }
+
         h2 {
             color: #000000;
             margin-top: 20px;
         }
+
         p {
             margin-bottom: 15px;
         }
+
         ul {
             list-style-type: disc;
             margin-left: 20px;
             margin-bottom: 15px;
         }
+
         a {
             color: #0056b3;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
         .logo {
             position: absolute;
             top: 20px;
             left: 20px;
         }
-        .user-rights-link {
-            color: #ff5722;
-            font-weight: bold;
-        }
     </style>
 </head>
-     <div id="innercontainer">
+
+<body>
+    <div id="outercontainer">
+        <div id="innercontainer">
             <!--Header-->
             <header>
-                <div id="headerLogoDiv">
-                    <a href="index.html"><img src="FinanzbergLogo.png"  height="75rem"></a>
-                    
+                <div id="header_logo_div">
+                    <a href="../index.html"><img src="../resources/images/general/logo/Finanzberg_logo_NoText.png"
+                            height="30rem"></a>
+                    <div id="header_logo_titel">Finanzberg</div>
                 </div>
-<body>
-    <h1>Rights Policy</h1>
+            </header>
+            <!--Content-->
+            <div id="contentdiv">
+                <div id="content">
+                    <h1>Rights Policy</h1>
     <p>This website respects your privacy rights. When using this website, we may collect certain information to improve your experience or for analytical purposes. Here's what you need to know:</p>
     <h2>Information We Collect</h2>
     <ul>
@@ -76,5 +99,39 @@
     <p>If you have any questions or concerns about our privacy policy, please <a href="index.html">contact us</a>.</p>
     <h2>Learn About Your Rights</h2>
     <p>To learn more about your rights as a user, visit <a href="https://commission.europa.eu/law/law-topic/data-protection/reform/rights-citizens/my-rights/what-are-my-rights_en" target="_blank" class="user-rights-link">this website</a>.</p>
-</body>
-</html>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer>
+        <div id="footer_logo_div">
+            <div id="footer_logo">
+                <img src="../resources/images/general/logo/Finanzberg_logo.png" height="60rem">
+            </div>
+            <div>Your Wealth, Simplified</div>
+        </div>
+        <div id="footer_links_div">
+            <div style="margin-left: 0;">
+                <div class="footer_links_header">Projekt</div>
+                <div><a href="https://github.com/Finanzberg">About</a></div>
+                <div><a href="https://github.com/orgs/Finanzberg/people">Team</a></div>
+                <div><a href="https://github.com/Finanzberg">GitHub</a></div>
+            </div>
+            <div>
+                <div class="footer_links_header">Services</div>
+                <div><a onclick="openModal('loginModal')">Insights</a></div>
+                <div><a onclick="openModal('loginModal')">Contracts</a></div>
+                <div><a onclick="openModal('loginModal')">Budgeting</a></div>
+            </div>
+            <div>
+                <div class="footer_links_header">Info & Legal</div>
+                <div><a href="https://status.finanzberg.online/" target="_blank">Status</a></div>
+                <div><a href="privacy.html">Privacy</a></div>
+                <div><a href="rights.html">Rights</a></div>
+            </div>
+        </div>
+    </footer>
+    <div id="overlay"></div>
+</body>s

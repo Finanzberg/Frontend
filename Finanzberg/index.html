@@ -24,7 +24,7 @@
             <!--Header-->
             <header>
                 <div id="header_logo_div">
-                    <img src="resources/images/general/logo/Finanzberg_logo_NoText.png" height="30rem">
+                    <a href="index.html"><img src="resources/images/general/logo/Finanzberg_logo_NoText.png" height="30rem"></a>
                     <div id="header_logo_titel">Finanzberg</div>
                 </div>
                 <div id="header_links_div">
@@ -35,23 +35,37 @@
                         <button id="header_link_login_button" onclick="openModal('loginModal')">Login</button>
                     </div>
                 </div>
-                <div>
+                <div id="header_links_div_small">
                     <label class="hamburger_menu_button">
-                        <input type="checkbox">
+                        <input id="hamburger_menu_checkbox" type="checkbox" onclick="hamburger_menu()">
                     </label>
                 </div>
-                
             </header>
 
-            <div class="hamburger_menu">
+            <div id="hamburger_menu">
                 <a href="#gettingStarted" class="headerLink">Getting Started</a>
                 <a href="#features" class="headerLink">Features</a>
                 <a href="#signUp" class="headerLink">Join now</a>
-                <button class="primaryButtonSmall" id="headerHaburgerLoginButton"
-                    onclick="openModal('loginModal')">Login
+                <button id="headerHaburgerLoginButton" onclick="openModal('loginModal')">Login
                 </button>
             </div>
-            
+            <script>
+                document.getElementById('hamburger_menu').style.display = 'none'
+                function hamburger_menu() {
+                    if (document.getElementById("hamburger_menu").style.display === 'none') {
+                        document.getElementById('hamburger_menu').style.display = 'flex'
+                    } else {
+                        document.getElementById('hamburger_menu').style.display = 'none'
+                    }
+                }
+
+                window.addEventListener('resize', function (event) {
+                    document.getElementById('hamburger_menu').style.display = 'none'
+                    document.getElementById('hamburger_menu_checkbox').checked = false
+                }, true);
+            </script>
+            </script>
+
             <!--Content-->
             <div id="contentdiv">
                 <div id="start">
@@ -84,21 +98,25 @@
                         <div id="gettingStartedLeftContent">A quick guide to managing wealth.</div>
                     </div>
                     <div id="gettingStartedRight">
-                        <div>
-                            <div id="gettingStartedRightTitel">Create Account</div>
-                            <div id="gettingStartedRightSubtitel">Sign up with basic details</div>
+                        <div id="gettingStartedRightUpDown">
+                            <div>
+                                <div id="gettingStartedRightTitel">Create Account</div>
+                                <div id="gettingStartedRightSubtitel">Sign up with basic details</div>
+                            </div>
+                            <div>
+                                <div id="gettingStartedRightTitel">Set Goals</div>
+                                <div id="gettingStartedRightSubtitel">Define financial objectives with Budgeting</div>
+                            </div>
                         </div>
-                        <div>
-                            <div id="gettingStartedRightTitel">Set Goals</div>
-                            <div id="gettingStartedRightSubtitel">Define financial objectives with Budgeting</div>
-                        </div>
-                        <div>
-                            <div id="gettingStartedRightTitel">Track Expenditure</div>
-                            <div id="gettingStartedRightSubtitel">Monitor expenses easily</div>
-                        </div>
-                        <div>
-                            <div id="gettingStartedRightTitel">Invest Wisely</div>
-                            <div id="gettingStartedRightSubtitel">Manage your investments</div>
+                        <div id="gettingStartedRightUpDown">
+                            <div>
+                                <div id="gettingStartedRightTitel">Track Expenditure</div>
+                                <div id="gettingStartedRightSubtitel">Monitor expenses easily</div>
+                            </div>
+                            <div>
+                                <div id="gettingStartedRightTitel">Invest Wisely</div>
+                                <div id="gettingStartedRightSubtitel">Manage your investments</div>
+                            </div>
                         </div>
                     </div>
                 </div>
