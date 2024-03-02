@@ -8,7 +8,6 @@
 #start {
     background-image: url('../images/landingPage/start.jpg');
     box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.527);
-
     background-size: cover;
     height: 55rem;
     text-align: center;
@@ -57,7 +56,8 @@
 }
 
 #ourVisionImg {
-    width: 40%;
+    width: 40vw;
+    height: auto;
     border-radius: 30px;
 }
 
@@ -112,7 +112,7 @@
     gap: 10rem;
 }
 
-#gettingStartedRightUpDown{
+#gettingStartedRightUpDown {
     display: flex;
     gap: 10vw;
 }
@@ -152,11 +152,13 @@
 
 #featuresDivs {
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #featuresDiv {
-    width: 30%;
+    margin: 1rem;
+    width: 32rem;
     height: auto;
     border-radius: 30px;
 }
@@ -190,7 +192,7 @@
     padding-left: 10rem;
     padding-right: 10rem;
     margin-right: 1rem;
-    margin-top: 2rem;    
+    margin-top: 2rem;
 }
 
 /*modal*/
@@ -260,10 +262,15 @@ input {
 }
 
 @media screen and (max-width: 1300px) {
+    #startTitel {
+        font-size: 4rem;
+    }
+
     #signUpRight {
         padding-left: 5vw;
         padding-top: 20%;
     }
+
     #signUpRightTitel {
         font-size: 3rem;
         font-weight: 550;
@@ -279,16 +286,12 @@ input {
 
 @media screen and (max-width: 1100px) {
 
-    
-    #featuresDivs {
-        flex-direction: column;
-        margin-top: 2rem;
-        gap: 2rem;
+    #startTitel {
+        font-size: 4rem;
     }
 
-    #featuresDiv {
-        width: 70%;
-        margin-left: 15%;
+    #ourVisionImg {
+        height: fit-content;
     }
 
     #signUp {
@@ -303,10 +306,157 @@ input {
     #signUpRight {
         background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("../images/landingPage/signUp.jpg");
         background-size: cover;
+        margin: 0;
         padding-top: 3rem;
         padding-bottom: 10rem;
         text-align: center;
         padding-bottom: 20rem;
-        width: 100%;
+        width: 100vw;
+    }
+
+
+}
+
+@media screen and (max-width: 900px) {
+    #start {
+        background-position: center;
+        height: auto;
+    }
+
+    #startTitel {
+        padding-top: 10rem;
+    }
+
+    #startButtons {
+        padding-bottom: 10rem;
+    }
+
+    #startButtonSec {
+        padding-left: 8rem;
+        padding-right: 8rem;
+    }
+
+    #ourVisionTexTitel {
+        font-size: 2rem;
+    }
+
+    #ourVisionTex {
+        font-size: 1.5rem;
+    }
+
+    #gettingStarted {
+        flex-direction: column;
+    }
+
+    #gettingStartedLeft {
+        width: 100vw;
+    }
+
+    #gettingStartedRight {
+        width: 100vw;
+    }
+
+    #featuresTitle {
+        padding-left: 35vw;
+    }
+
+    #featuresTitleSec {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #startTitel {
+        font-size: 3rem;
+    }
+
+    #startButtonPri {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    #startButtonSec {
+        padding-left: 10rem;
+        padding-right: 8rem;
+    }
+
+    #gettingStartedRight {
+        width: 100vw;
+        padding-left: 5rem;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    #ourVisionImg {
+        display: none;
+    }
+
+    #ourVision {
+        padding: 3rem;
+    }
+
+    #ourVisionTexDiv {
+        padding-left: 0;
+    }
+
+    #gettingStartedRight {
+        gap: 10vw;
+    }
+
+    #gettingStartedRightUpDown {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #featuresTitle {
+        font-size: 1.5rem;
+    }
+
+    #featuresTitleSec {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    #startButtonPri {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+
+    #startButtonSec {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+
+    #gettingStartedLeft {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    #gettingStartedLeftTitel {
+        font-size: 2rem;
+    }
+
+    #features{
+        padding-top: 3rem;
+    }
+    #signUpRight {
+        padding-left: .5rem;
+        padding-bottom: 3rem;
+    }
+
+    #signUpRightTitel{
+        font-size: 2.5rem;
+    }
+
+}
+
+@media screen and (max-width: 370px) {
+    #startTitel {
+        font-size: 2rem;
+    }
+    #startSubTitel {
+        font-size: 1.3rem;
     }
 }

@@ -14,7 +14,7 @@
 * {
     font-family: var(--font-family);
     color: var(--text_colore);
-
+    overflow-x: hidden;
 }
 
 ::selection {
@@ -260,11 +260,13 @@ footer {
 
 @media screen and (max-width: 900px) {
     /*footer change*/
-    #footer_links_div {
-        display: grid;
+    footer{
+        flex-direction: column;
         gap: 1.5rem;
     }
-    #footer_logo_div {
-        display: block;
+    #footer_links_div{
+        display: flex;
+        text-align: center;
+        gap: 5rem;
     }
 }
