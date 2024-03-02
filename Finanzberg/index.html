@@ -146,7 +146,7 @@
 
                 <!--Login Modal-->
                 <div class="modal" id="loginModal">
-                    <div class="modalTitel">Login</div>
+                    <div class="modalTitel">Login<button id="closeModal" onclick="closeModal('loginModal')">✖</button></div>
                     <div><input id="loginEmail" type="email" placeholder="E-Mail"></div>
                     <div><input id="loginPassword" type="password" placeholder="Passwort"></div>
                     <button onclick="login()" id="loginButton" class="primaryButton">Login</button>
@@ -155,7 +155,7 @@
                 </div>
                 <!--Register Modal-->
                 <div class="modal" id="registerModal">
-                    <div class="modalTitel">Register</div>
+                    <div class="modalTitel">Register<button id="closeModal" onclick="closeModal('registerModal')">✖</button></div>
                     <div><input id="registerName" type="text" placeholder="Name"></div>
                     <div><input id="registerEmail" type="email" placeholder="E-Mail"></div>
                     <div><input id="registerPassword" type="password" placeholder="Passwort"></div>
