@@ -195,72 +195,6 @@
     margin-top: 2rem;
 }
 
-/*modal*/
-input {
-    border-radius: 0.5rem;
-    padding: 0.4rem;
-    font-size: large;
-    width: 97%;
-}
-
-#loginButton {
-    width: 25rem;
-}
-
-.modalTitel {
-    font-weight: bold;
-    text-align: center;
-    font-size: 2rem;
-}
-
-.modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: 200ms ease-in-out;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    padding: 5rem;
-    padding-top: 3rem;
-    gap: 1rem;
-    background-color: white;
-    border-radius: 0.5rem;
-}
-
-.modal.active {
-    transform: translate(-50%, -50%) scale(1);
-}
-
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #00000077;
-    pointer-events: none;
-    transition: 200ms ease-in-out;
-    opacity: 0;
-}
-
-#overlay.active {
-    background-color: #00000077;
-    opacity: 1;
-    pointer-events: all;
-}
-
-#loginErrorMassage {
-    font-weight: 600;
-    color: red;
-}
-
-#registerErrorMassage {
-    font-weight: 600;
-    color: red;
-}
-
 @media screen and (max-width: 1300px) {
     #startTitel {
         font-size: 4rem;
@@ -459,4 +393,80 @@ input {
     #startSubTitel {
         font-size: 1.3rem;
     }
+}
+
+
+
+
+
+
+
+/*modal*/
+input {
+    border-radius: 0.5rem;
+    padding: 0.4rem;
+    font-size: large;
+    width: 97%;
+    padding-right: 1px;
+    background-color: transparent;
+    border-color: #24242459;
+    border-style: solid;
+}
+
+#loginButton {
+    width: 25rem;
+}
+
+.modalTitel {
+    font-weight: bold;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+    padding-top: 3rem;
+    gap: 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #00000077;
+    pointer-events: none;
+    transition: 200ms ease-in-out;
+    opacity: 0;
+}
+
+#overlay.active {
+    background-color: #00000077;
+    opacity: 1;
+    pointer-events: all;
+}
+
+#loginErrorMassage {
+    font-weight: 600;
+    color: red;
+}
+
+#registerErrorMassage {
+    font-weight: 600;
+    color: red;
 }
