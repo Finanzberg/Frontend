@@ -14,7 +14,6 @@
 * {
     font-family: var(--font-family);
     color: var(--text_colore);
-    overflow-x: hidden;
 }
 
 ::selection {
