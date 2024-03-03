@@ -90,13 +90,13 @@
                 <div class="modal" id="uploadModal">
                     <div class="modalTitel">Upload Bank Statements<button id="closeModal"
                             onclick="closeModal('uploadModal')">✖</button></div>
-                    <select id="uploadModal_bank_select">
+                    <select id="uploadModal_bank_select"> 
                         <option value="CSV.Sparkasse">Sparkasse CSV</option>
                         <option value="CAMT.Sparkasse">Sparkasse CAMT v8</option>
                         <option value="CSV.ApoBank">ApoBank CSV</option>
                     </select>
                     <div><input id="uploadModal_data" type="file" accept=".csv"></div>
-                    <button onclick="upload()" id="uploadModal_button" class="primaryButton">Uplad</button>
+                    <button onclick="upload()" id="uploadModal_button" class="primaryButton">Upload</button>
                     <div id="uploadModal_ErrorMassage"></div>
                 </div>
 
@@ -234,6 +234,24 @@
 
     //upload
     function upload() {
+        let bank = document.getElementById('uploadModal_bank_select').value
+        let data = document.getElementById('uploadModal_data')
+
+        let json = {
+            "bank": bank,
+            "csv": data
+        }
+        let jsonStr = JSON.stringify(json);
+        send("POST", "account/change", jsonStr, function (response, status) {
+            if (status === 200) {
+                setCookie("user", JSON.stringify(JSON.parse(response).user))
+                var j = JSON.parse(getCookie('user'))
+                document.getElementById('Account_Name').innerHTML = j.name
+                document.getElementById('Account_email').innerHTML = j.email
+            } else {
+                alert('error')
+            }
+        })
         //uploadModal_ErrorMassage
     }
 
