@@ -243,8 +243,6 @@
                     document.getElementById('registerErrorMassage').innerHTML = ''
                     reader.onload = function (event) {
                         avatar = `data:${file.type};base64,${btoa(event.target.result)}`
-                        // do sth
-
                         resolve()
                     };
                     reader.onerror = function () {
