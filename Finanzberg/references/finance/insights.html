@@ -110,6 +110,7 @@
                         </div>
                         <input type="file" id="imgupload" style="display:none"/> 
                         <button class="avatar"  onclick="imgupload()" id="OpenImgUpload"></button>
+                        <input type="password" id=""/> 
                         <script> function imgupload(){ document.getElementById('imgupload').click() }</script> 
                     </div>
                     <!--<button onclick="updateAccount()" id="accountModalUpdateButton" class="primaryButton">Update Account</button>--> 
@@ -210,7 +211,9 @@
 
 
     function delAccount(){
-        //acount del in db
+        send("POST", "account/delete", jsonStr, function (response, status) {
+            
+        })
         localStorage.clear();
         deleteCookie('session')
         deleteCookie('user')
