@@ -109,13 +109,14 @@ header {
 /*hamburger menu*/
 :root{
     --bar-widh: 3rem;
-    --bar-height: .5rem;
+    --bar-height: .4rem;
     --hamburger-gap: .4rem;
     --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
     --x-width: calc(var(--hamburger-height) * 1.414213562);
 }
 
 .hamburger_menu_button{
+    padding: 2px;
     display: flex;
     flex-direction: column;
     gap: var(--hamburger-gap);
@@ -157,7 +158,6 @@ header {
     text-align: center;
     padding-top: 1rem;
     gap: 1rem;
-    position: sticky;
     top: calc((.8%)*2 + var(--hamburger-height)) ;
     background-color: var(--headerBackgroundcolor);
     display: none;
