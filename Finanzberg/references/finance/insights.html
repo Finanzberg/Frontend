@@ -289,7 +289,7 @@
     }
 
     function updatePassword(){
-        let password = document.getElementById('updatePassword').value
+        let password = SHA256(document.getElementById('updatePassword').value)
         let json = {
             "password": password
         }
