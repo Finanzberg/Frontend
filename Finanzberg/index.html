@@ -277,7 +277,7 @@
                 let j = JSON.parse(response);
                 if (j.session != null) {
                     setCookie("session", j.session)
-                    setCookie("user", j.user)
+                    setCookie("user", JSON.stringify(j.user))
                     document.getElementById('loginButton').innerHTML = 'Loging'
                     location.href = "references/finance/insights.html";
                 }
@@ -314,7 +314,7 @@
                 let j = JSON.parse(response);
                 if (j.session != null) {
                     setCookie("session", j.session)
-                    setCookie("user", j.user)
+                    setCookie("user", JSON.stringify(j.user))
                     document.getElementById('registerButton').innerHTML = 'Create Account'
                     location.href = "references/finance/insights.html";
                     const modals = document.querySelectorAll('.modal.active')
