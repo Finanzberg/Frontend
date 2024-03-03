@@ -370,6 +370,10 @@ select{
 #Account_Name{
     font-weight: 600;
 }
+#Account_Name_div{
+    display: flex;
+    flex-direction: row;
+}
 #accountModallogoutButton{
     margin-top: 1rem;
     font-size: medium;
@@ -381,7 +385,12 @@ select{
 #accountModalDelButton2{
     font-size: medium;
     border-color: red;
-    idth: 150px;
+    width: 150px;
+}
+#accountModalNameButton{
+    font-size: medium;
+    border-color: transparent;
+    width: 150px;
 }
 #accountModalDelCancelButton{
     font-size: medium;

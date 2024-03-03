@@ -105,8 +105,8 @@
                     </div>
                     <div id="account_details">
                         <div >
-                            <div id="Account_Name"></div>
-                            <div id="Account_email"></div>
+                            <div onclick="closeModal('accountModal'), openModal('nameModal')" id="Account_Name_div"><div id="Account_Name">asdasd</div>✎</div>
+                            <div id="Account_email">asdas</div>
                         </div>
                         <input type="file" id="imgupload" style="display:none"/> 
                         <button class="avatar"  onclick="imgupload()" id="OpenImgUpload"></button>
@@ -129,8 +129,18 @@
                     <div class="modalTitel">Confirm Deletion</div>
                     <input type="password" placeholder="password" id="accountModalDelPassword"/> 
                     <div>
-                        <button onclick="closeModal('delModal')" id="accountModalDelCancelButton" class="secondaryButton">Cancel</button>
+                        <button onclick="closeModal('delModal'), openModal('accountModal')" id="accountModalDelCancelButton" class="secondaryButton">Cancel</button>
                         <button onclick="delAccount()" id="accountModalDelButton2" class="secondaryButton">Confirm Delete</button>
+                    </div>
+                    <div id="delModalErrorMassage"></div>
+                </div>
+                <!--del Modal-->
+                <div class="modal" id="nameModal">
+                    <div class="modalTitel">Change Username</div>
+                    <input type="text" placeholder="name" id="updateName"/> 
+                    <div>
+                        <button onclick="closeModal('nameModal'), openModal('accountModal')" id="accountModalDelCancelButton" class="secondaryButton">Cancel</button>
+                        <button onclick="closeModal('nameModal'), openModal('accountModal'), updateName()" id="accountModalNameButton" class="primaryButton">Confirm Update</button>
                     </div>
                     <div id="delModalErrorMassage"></div>
                 </div>
@@ -211,6 +221,25 @@
     function updateImages(){
         //update images in Db
         load_profile_picture()
+    }
+    function updateName(){
+        //update name in Db
+        let name = document.getElementById('updateName').value
+        let json = {
+            "name": name
+        }
+        let jsonStr = JSON.stringify(json);
+        send("POST", "account/change", jsonStr, function (response, status) {
+            if (status === 200) {
+                var j = JSON.parse(getCookie('user'))
+                document.getElementById('Account_Name').innerHTML =  j.name
+                document.getElementById('Account_email').innerHTML = j.email
+            } else if(status === 401){
+                alert('error')
+            }
+        })
+
+       
     }
 
     function logout(){
