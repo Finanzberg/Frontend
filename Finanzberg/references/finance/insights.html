@@ -126,11 +126,13 @@
 
                 <!--del Modal-->
                 <div class="modal" id="delModal">
+                    <div class="modalTitel">Confirm Deletion</div>
                     <input type="password" placeholder="password" id="accountModalDelPassword"/> 
                     <div>
                         <button onclick="closeModal('delModal')" id="accountModalDelCancelButton" class="secondaryButton">Cancel</button>
                         <button onclick="delAccount()" id="accountModalDelButton2" class="secondaryButton">Confirm Delete</button>
                     </div>
+                    <div id="delModalErrorMassage"></div>
                 </div>
             </div>
         </div>
@@ -220,14 +222,24 @@
 
 
     function delAccount(){
+        document.getElementById('delModalErrorMassage').innerHTML = ''
         let password = SHA256(document.getElementById('accountModalDelPassword').value)
-
-
-        localStorage.clear();
-        deleteCookie('session')
-        deleteCookie('user')
-        window.location.href = "../../index.html"
-        alert("account deleted")
+        let json = {
+            "password": password
+        }
+        let jsonStr = JSON.stringify(json);
+        send("POST", "account/delete", jsonStr, function (response, status) {
+            if (status === 200) {
+                localStorage.clear();
+                deleteCookie('session')
+                deleteCookie('user')
+                window.location.href = "../../index.html"
+                alert("account deleted")
+            } else if(status === 401){
+                document.getElementById('delModalErrorMassage').innerHTML = 'password incorrect'
+            }
+        })
+       
     }
 
 </script>
