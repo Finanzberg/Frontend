@@ -4,7 +4,7 @@
     --accent_color_hover: #eac11b;
     --text_colore: #0c1f29;
     --backgroundcolor: #242424;
-    --selectionColor: rgba(255, 255, 255, 0.5);
+    --selectionColor: rgba(0, 0, 0, 0.068);
     --headerBackgroundcolor: rgba(255, 255, 255, 0.959);
     --footerBackgroundcolor: white;
     --font-family: "Poppins", sans-serif;
@@ -362,6 +362,7 @@ select{
     border-color: transparent;
     background-image: url("../../resources/images/general/profile_picture_blank.png");
     background-size: cover;
+    margin-left: 2rem;
 }
 #OpenImgUpload:hover{
     border-color: #24242459;
@@ -371,6 +372,7 @@ select{
     font-weight: 600;
 }
 #Account_Name_div{
+    cursor: pointer;
     display: flex;
     flex-direction: row;
 }
@@ -438,6 +440,11 @@ select{
     top: 0rem;
     right: 1rem;
     position: fixed;
+}
+
+.avatar{
+    background-size: cover;
+    background-position: center center;
 }
 
 @media screen and (max-width: 1220px) {  
