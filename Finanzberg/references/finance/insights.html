@@ -110,12 +110,12 @@
                         </div>
                         <input type="file" id="imgupload" style="display:none"/> 
                         <button class="avatar"  onclick="imgupload()" id="OpenImgUpload"></button>
-                        <input type="password" id=""/> 
                         <script> function imgupload(){ document.getElementById('imgupload').click() }</script> 
                     </div>
+                    
                     <!--<button onclick="updateAccount()" id="accountModalUpdateButton" class="primaryButton">Update Account</button>--> 
                     <button onclick="logout()" id="accountModallogoutButton" class="secondaryButton">Log Out</button>
-                    <button onclick="delAccount()" id="accountModalDelButton" class="secondaryButton">Delete Account</button>
+                    <button onclick="closeModal('accountModal'), openModal('delModal')" id="accountModalDelButton" class="secondaryButton">Delete Account</button>
                     <div id="accountModalErrorMassage"></div>
                 </div>
                 <script>
@@ -123,6 +123,15 @@
                     document.getElementById('Account_Name').innerHTML =  j.name
                     document.getElementById('Account_email').innerHTML = j.email
                 </script>
+
+                <!--del Modal-->
+                <div class="modal" id="delModal">
+                    <input type="password" placeholder="password" id="accountModalDelPassword"/> 
+                    <div>
+                        <button onclick="closeModal('delModal')" id="accountModalDelCancelButton" class="secondaryButton">Cancel</button>
+                        <button onclick="delAccount()" id="accountModalDelButton2" class="secondaryButton">Confirm Delete</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -211,9 +220,9 @@
 
 
     function delAccount(){
-        send("POST", "account/delete", jsonStr, function (response, status) {
-            
-        })
+        let password = SHA256(document.getElementById('accountModalDelPassword').value)
+
+
         localStorage.clear();
         deleteCookie('session')
         deleteCookie('user')

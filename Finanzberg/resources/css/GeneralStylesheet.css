@@ -378,6 +378,16 @@ select{
     font-size: medium;
     border-color: red;
 }
+#accountModalDelButton2{
+    font-size: medium;
+    border-color: red;
+    idth: 150px;
+}
+#accountModalDelCancelButton{
+    font-size: medium;
+    width: 150px;
+}
+
 
 .modal.active {
     transform: translate(-50%, -50%) scale(1);
