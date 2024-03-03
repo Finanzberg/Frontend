@@ -118,10 +118,9 @@
                     <div id="accountModalErrorMassage"></div>
                 </div>
                 <script>
-                    var j = getCookie('user')
-                    console.log(j)
-                    document.getElementById('Account_Name').innerHTML = j["name"]
-                    document.getElementById('Account_email').innerHTML = j['email']
+                    var j = JSON.parse(getCookie('user'))
+                    document.getElementById('Account_Name').innerHTML =  j.name
+                    document.getElementById('Account_email').innerHTML = j.email
                 </script>
             </div>
         </div>
