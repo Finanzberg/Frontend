@@ -2,6 +2,7 @@ let api = "https://api.finanzberg.online/api/v1/";
 
 function send(method, apiSection, data, callback) {
     let xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
     xhr.open(method, api + apiSection, true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -9,7 +10,6 @@ function send(method, apiSection, data, callback) {
         }
     }
     xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.withCredentials = true;
     xhr.send(data);
 }
 

@@ -275,8 +275,7 @@
         send("POST", "account/auth", jsonStr, function (response, status) {
             if (status === 200) {
                 let j = JSON.parse(response);
-                if (j.session != null) {
-                    setCookie("session", j.session)
+                if (j.user != null) {
                     setCookie("user", JSON.stringify(j.user))
                     document.getElementById('loginButton').innerHTML = 'Loging'
                     location.href = "references/finance/insights.html";
@@ -313,8 +312,7 @@
         send("POST", "account/create", jsonStr, function (response, status) {
             if (status === 201) {
                 let j = JSON.parse(response);
-                if (j.session != null) {
-                    setCookie("session", j.session)
+                if (j.user != null) {
                     setCookie("user", JSON.stringify(j.user))
                     document.getElementById('registerButton').innerHTML = 'Create Account'
                     location.href = "references/finance/insights.html";
