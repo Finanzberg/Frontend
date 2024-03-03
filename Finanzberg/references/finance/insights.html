@@ -90,9 +90,9 @@
                 <div class="modal" id="uploadModal">
                     <div class="modalTitel">Upload Bank Statements<button id="closeModal"
                             onclick="closeModal('uploadModal')">✖</button></div>
-                    <select id="uploadModal_bank_select"> 
+                    <select id="uploadModal_bank_select">
+                        <option value="">*choose*</option>
                         <option value="CSV.Sparkasse">Sparkasse CSV</option>
-                        <option value="CAMT.Sparkasse">Sparkasse CAMT v8</option>
                         <option value="CSV.ApoBank">ApoBank CSV</option>
                     </select>
                     <div><input id="uploadModal_data" type="file" accept=".csv"></div>
@@ -161,8 +161,8 @@
                     <div>
                         <button onclick="closeModal('passwordModal'), openModal('accountModal')"
                             id="accountModalDelCancelButton" class="secondaryButton">Cancel</button>
-                        <button onclick="updatePassword()"
-                            id="accountModalNameButton" class="primaryButton">Confirm Update</button>
+                        <button onclick="updatePassword()" id="accountModalNameButton" class="primaryButton">Confirm
+                            Update</button>
                     </div>
                     <div id="delModalErrorMassage"></div>
                 </div>
@@ -234,25 +234,25 @@
 
     //upload
     function upload() {
+        document.getElementById('uploadModal_ErrorMassage').innerHTML = ''
         let bank = document.getElementById('uploadModal_bank_select').value
         let data = document.getElementById('uploadModal_data')
-
-        let json = {
-            "bank": bank,
-            "csv": data
-        }
-        let jsonStr = JSON.stringify(json);
-        send("POST", "account/change", jsonStr, function (response, status) {
-            if (status === 200) {
-                setCookie("user", JSON.stringify(JSON.parse(response).user))
-                var j = JSON.parse(getCookie('user'))
-                document.getElementById('Account_Name').innerHTML = j.name
-                document.getElementById('Account_email').innerHTML = j.email
-            } else {
-                alert('error')
+        if (!bank == '') {
+            console.log('asdad')
+            let json = {
+                "bank": bank,
+                "csv": data
             }
-        })
-        //uploadModal_ErrorMassage
+            let jsonStr = JSON.stringify(json);
+            send("POST", "data/upload/csv", jsonStr, function (response, status) {
+                if (status === 200) {
+                } else {
+                    alert('error')
+                }
+            })
+        }else {
+            document.getElementById('uploadModal_ErrorMassage').innerHTML = 'choose a bank'
+        }
     }
 
     document.getElementById('imgupload').addEventListener('change', async (event) => {
@@ -306,7 +306,7 @@
         })
     }
 
-    function updatePassword(){
+    function updatePassword() {
         let password = SHA256(document.getElementById('updatePassword').value)
         let json = {
             "password": password
@@ -314,7 +314,7 @@
         let jsonStr = JSON.stringify(json);
         send("POST", "account/change", jsonStr, function (response, status) {
             if (status === 200) {
-                closeModal('passwordModal') 
+                closeModal('passwordModal')
                 openModal('accountModal')
             } else {
                 alert('error')
