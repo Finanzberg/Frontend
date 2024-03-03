@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../../resources/css/landingpage.css" />
     <script>
         //checkSession()
+        load_profile_picture()
     </script>
 </head>
 
@@ -39,7 +40,7 @@
                         <button id="header_link_upload_button" onclick="openModal('uploadModal')">Upload</button>
                     </div>
                     <div>
-                        <button id="header_link_account" onclick="openModal('accountModal')"></button>
+                        <button class="avatar" id="header_link_account" onclick="openModal('accountModal')"></button>
                     </div>
                 </div>
                 <div id="header_links_div_small">
@@ -108,7 +109,7 @@
                             <div id="Account_email"></div>
                         </div>
                         <input type="file" id="imgupload" style="display:none"/> 
-                        <button onclick="imgupload()" id="OpenImgUpload"></button>
+                        <button class="avatar"  onclick="imgupload()" id="OpenImgUpload"></button>
                         <script> function imgupload(){ document.getElementById('imgupload').click() }</script> 
                     </div>
                     <!--<button onclick="updateAccount()" id="accountModalUpdateButton" class="primaryButton">Update Account</button>--> 
@@ -193,22 +194,24 @@
 
     document.getElementById('imgupload').addEventListener('change', function(e) {
     if (e.target.files[0]) {
-        updateAccount()
+        updateImages()
     }
     });
-    function updateAccount(){
-        //update images
+    function updateImages(){
+        //update images in Db
+        load_profile_picture()
     }
 
     function logout(){
-
+        localStorage.clear();
+        deleteCookie('session')
+        deleteCookie('user')
         window.location.href = "../../index.html"
     }
 
 
     function delAccount(){
 
-        
         window.location.href = "../../index.html"
         alert("account deleted")
     }

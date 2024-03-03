@@ -285,6 +285,7 @@
                 modals.forEach(modal => {
                     closeModalbyModal(modal)
                 })
+                load_profile_picture()
             } else {
                 document.getElementById('loginButton').innerHTML = 'Loging'
                 document.getElementById('loginErrorMassage').innerHTML = 'username or password wrong'
@@ -321,6 +322,7 @@
                     modals.forEach(modal => {
                         closeModalbyModal(modal)
                     })
+                    load_profile_picture()
                 }
             } else {
                 document.getElementById('registerButton').innerHTML = 'Create Account'
@@ -328,6 +330,8 @@
             }
         })
     }
+
+    
 </script>
 
 </html>

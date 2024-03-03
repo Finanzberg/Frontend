@@ -12,3 +12,15 @@ function send(method, apiSection, data, callback) {
     xhr.withCredentials = true;
     xhr.send(data);
 }
+
+async function load_profile_picture(){
+    send("GET", "account/avatar", {}, function (response, status) {
+        if (status === 200) {
+            localStorage.setItem("profile_picture", response);
+            document.getElementsByClassName('avatar').forEach(element => {
+                element.style = 'background-image: '+ response;
+            });
+        }
+        
+    })
+}
