@@ -65,7 +65,7 @@ header {
     padding: .8%;
     padding-right: 1%;
     padding-left: 1%;
-    z-index: 100;
+    z-index: 98;
 }
 
 /*logo*/
@@ -104,6 +104,31 @@ header {
 
 #header_link_login_button:hover {
     background-color: var(--accent_color_hover);
+}
+
+#header_link_account{
+    width: 32px;
+    height: 32px;
+    padding-top: 2.5px;
+    background-image: url("../../resources/images/general/profile_picture_blank.png");
+    background-size:contain;
+    border-color: transparent;
+    border-radius: 60000rem;
+}
+#header_link_account:hover{
+    border-color: #24242459;
+    border-style: solid;
+}
+#header_link_upload_button{
+    width: 5rem;
+    height: 2rem;
+    background-color: transparent;
+    border-radius: 0.5rem;
+    border-color: #24242459;
+    border-style: solid;
+}
+#header_link_upload_button:hover{
+    background-color: rgba(0, 0, 0, 0.048);
 }
 
 /*hamburger menu*/
@@ -235,6 +260,7 @@ footer {
 }
 
 .secondaryButton {
+    font-size: 14;
     background-color: transparent;
     border-color: #24242459;
     border-radius: 1px;
@@ -268,5 +294,149 @@ footer {
         display: flex;
         text-align: center;
         gap: 5rem;
+    }
+}
+
+
+
+/*modal*/
+input {
+    border-radius: 0.5rem;
+    padding: 0.4rem;
+    font-size: large;
+    width: 97%;
+    padding-right: 1px;
+    background-color: transparent;
+    border-color: #24242459;
+    border-style: solid;
+}
+input[type="file"] {
+    border-color: transparent;
+}
+select{
+    border-radius: 0.5rem;
+    padding: 0.4rem;
+    font-size: large;
+    width: 97%;
+    padding-right: 1px;
+    background-color: transparent;
+    border-color: #24242459;
+    border-style: solid;
+}
+
+#loginButton {
+    width: 25rem;
+}
+
+.modalTitel {
+    font-weight: bold;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+    padding-top: 3rem;
+    gap: 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+}
+#account_details{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#OpenImgUpload{
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 10000px;
+    border-color: transparent;
+    background-image: url("../../resources/images/general/profile_picture_blank.png");
+    background-size: cover;
+}
+#OpenImgUpload:hover{
+    border-color: #24242459;
+    border-style: solid;
+}
+#Account_Name{
+    font-weight: 600;
+}
+#accountModallogoutButton{
+    margin-top: 1rem;
+    font-size: medium;
+}
+#accountModalDelButton{
+    font-size: medium;
+    border-color: red;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #00000077;
+    pointer-events: none;
+    transition: 200ms ease-in-out;
+    opacity: 0;
+    z-index: 99;
+}
+
+#overlay.active {
+    background-color: #00000077;
+    opacity: 1;
+    pointer-events: all;
+}
+
+#loginErrorMassage {
+    font-weight: 600;
+    color: red;
+}
+
+#registerErrorMassage {
+    font-weight: 600;
+    color: red;
+}
+
+#closeModal{
+    background-color: transparent;
+    border: none;
+    font-size: 2.5rem;
+    top: 0rem;
+    right: 1rem;
+    position: fixed;
+}
+
+@media screen and (max-width: 1220px) {  
+    .modal {
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        width: 100vw;
+        height: 100vh;
+        transform: translate(0,0) scale(0);
+        padding: 0rem;
+    }
+    
+    .modal.active {
+        transform: translate(0 ,0 ) scale(1);
+    }
+
+    input {
+        margin-left: .5rem;
     }
 }

@@ -28,7 +28,7 @@ function deleteCookie(name) {
 
 function checkSession() {
     if (getCookie("session") == null) {
-        window.location.href = "HomePage.html";
+        window.location.href = "../../index.html";
         return false;
     }
     let data = {
@@ -39,7 +39,8 @@ function checkSession() {
     send("POST", "account/session", JSON.stringify(data), function (response, status) {
         console.log(response);
         if (status !== 200) {
-            window.location.href = "login.html";
+            window.location.href = "../../index.html";
+            openModal('loginModal');
             valid = false;
         }
     });

@@ -162,7 +162,6 @@
                     <div>Avatar<input id="registerAvatar" type="file" placeholder="Avatar" accept="image/*"></div>
                     <button onclick="register()" id="registerButton" class="primaryButton">Create Account</button>
                     <div id="registerErrorMassage"></div>
-                    <div id="registerMassage"></div>
                 </div>
             </div>
         </div>
@@ -203,6 +202,33 @@
 
 <script>
     //model logic
+    const overlay = document.getElementById("overlay")
+
+    overlay.addEventListener('click', () => {
+        const modals = document.querySelectorAll('.modal.active')
+        modals.forEach(modal => {
+            closeModalbyModal(modal)
+        })
+    })
+
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId)
+        modal.classList.add('active')
+        overlay.classList.add('active')
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId)
+        modal.classList.remove('active')
+        overlay.classList.remove('active')
+    }
+
+    function closeModalbyModal(modal) {
+        modal.classList.remove('active')
+        overlay.classList.remove('active')
+    }
+
+    //Login&register
     const fileInput = document.getElementById('registerAvatar')
     let avatar = "blank-profile-picture.png";
     fileInput.addEventListener('change', async (event) => {
@@ -231,31 +257,6 @@
             })
         })
     })
-    const overlay = document.getElementById("overlay")
-
-    overlay.addEventListener('click', () => {
-        const modals = document.querySelectorAll('.modal.active')
-        modals.forEach(modal => {
-            closeModalbyModal(modal)
-        })
-    })
-
-    function openModal(modalId) {
-        const modal = document.getElementById(modalId)
-        modal.classList.add('active')
-        overlay.classList.add('active')
-    }
-
-    function closeModal(modalId) {
-        const modal = document.getElementById(modalId)
-        modal.classList.remove('active')
-        overlay.classList.remove('active')
-    }
-
-    function closeModalbyModal(modal) {
-        modal.classList.remove('active')
-        overlay.classList.remove('active')
-    }
 
     function login() {
         document.getElementById('loginButton').innerHTML = '<img src="resources/images/general/loading.gif" width="20rem">'
@@ -276,9 +277,9 @@
                 let j = JSON.parse(response);
                 if (j.session != null) {
                     setCookie("session", j.session)
-                    setCookie("user", JSON.stringify(j.user))
+                    setCookie("user", j.user)
                     document.getElementById('loginButton').innerHTML = 'Loging'
-                    location.href = "references/finance_pages/insight_overview.html";
+                    location.href = "references/finance/insights.html";
                 }
                 const modals = document.querySelectorAll('.modal.active')
                 modals.forEach(modal => {
@@ -313,9 +314,9 @@
                 let j = JSON.parse(response);
                 if (j.session != null) {
                     setCookie("session", j.session)
-                    setCookie("user", JSON.stringify(j.user))
+                    setCookie("user", j.user)
                     document.getElementById('registerButton').innerHTML = 'Create Account'
-                    location.href = "references/finance_pages/insight_overview.html";
+                    location.href = "references/finance/insights.html";
                     const modals = document.querySelectorAll('.modal.active')
                     modals.forEach(modal => {
                         closeModalbyModal(modal)
