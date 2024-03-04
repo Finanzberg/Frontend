@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Finanzberg - Budgeting</title>
+    <title>Finanzberg - Insights</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="../../resources/images/general/logo/Finanzberg_logo.png" type="image/x-icon" />
@@ -36,7 +36,7 @@
                 <div id="header_links_div">
                     <a href="insights.html" class="header_link">Insights</a>
                     <a href="contracts.html" class="header_link">Contracts</a>
-                    <a href="budgeting.html" class="header_link"  style="text-decoration: underline;">Budgeting</a>
+                    <a href="budgeting.html" class="header_link" style="text-decoration: underline;">Budgeting</a>
                     <div>
                         <button id="header_link_upload_button" onclick="openModal('uploadModal')">Upload</button>
                     </div>
@@ -52,7 +52,7 @@
             </header>
 
             <div id="hamburger_menu">
-                <a href="insigh.html" class="headerLink">Insights</a>
+                <a href="insight.html" class="headerLink">Insights</a>
                 <a href="contracts.html" class="headerLink">Contracts</a>
                 <a href="budgeting.html" class="headerLink" style="text-decoration: underline;">Budgeting</a>
                 <div>
@@ -81,7 +81,7 @@
 
             <!--Content-->
             <div id="contentdiv">
-
+                
 
 
 
@@ -232,20 +232,49 @@
         overlay.classList.remove('active')
     }
 
+
+    let data = document.getElementById('uploadModal_data')
+    let csvData;
+        
+    data.addEventListener('change', async (event) => {
+        const files = event.srcElement.files;
+
+        const filePromises = Object.entries(files).map(item => {
+            return new Promise((resolve, reject) => {
+                const [index, file] = item
+                const reader = new FileReader();
+                reader.readAsBinaryString(file);
+                if (file.type.match('.csv')) {
+                    document.getElementById('uploadModal_ErrorMassage').innerHTML = ''
+
+                    reader.onload = function (event) {
+                        csvData = event.target.result
+                        resolve()
+                    };
+                    reader.onerror = function () {
+                        alert("can't read the file");
+                        reject()
+                    };
+                } else {
+                    document.getElementById('uploadModal_ErrorMassage').innerHTML = 'pls select csv'
+                }
+            })
+        })
+    })
+
     //upload
     function upload() {
         document.getElementById('uploadModal_ErrorMassage').innerHTML = ''
         let bank = document.getElementById('uploadModal_bank_select').value
-        let data = document.getElementById('uploadModal_data')
         if (!bank == '') {
-            console.log('asdad')
             let json = {
                 "bank": bank,
-                "csv": data
+                "csv": csvData
             }
             let jsonStr = JSON.stringify(json);
             send("POST", "data/upload/csv", jsonStr, function (response, status) {
                 if (status === 200) {
+                    closeModal('uploadModal')
                 } else {
                     alert('error')
                 }

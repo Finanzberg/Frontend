@@ -274,6 +274,7 @@
             let jsonStr = JSON.stringify(json);
             send("POST", "data/upload/csv", jsonStr, function (response, status) {
                 if (status === 200) {
+                    closeModal('uploadModal')
                 } else {
                     alert('error')
                 }
