@@ -1,28 +1,55 @@
 send("GET", "data/saldo", {}, function(response, status){
     const data = JSON.parse(response)
-    createChart(data.labels, data.data)
+    let dates = [];
+    data.labels.forEach((value) => { // Only one graph is needed for the labels
+        let date = new Date(value * 1000)
+        let name = date.toLocaleDateString() + " " + date.toLocaleTimeString()
+        dates.push(name)
+    })
+    createChart(dates, data.data)
 })
+
+
 
 function createChart(labels, amounts) {
     const ctx = document.getElementById('myChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar', // or 'line', 'pie', etc.
-        data: {
+    console.log(amounts)
+    const config = {
+        type: 'line',
+        data:{
             labels: labels,
-            datasets: [{
-                label: 'Amounts',
-                data: amounts,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
+            datasets: [
+                {
+                    label: "Saldo", 
+                    data: amounts,
+                    borderWidth: 1,
+                    cubicInterpolationMode: 'monotone',
+                    tension: 0.4
+                }
+            ]
         },
         options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+          responsive: true,
+          scales: {
+                x: {
+                    ticks: {
+                        autoSkip: true,
+                        maxTicksLimit: document.defaultView.innerWidth / 200
+                    }
+                },
+            },
+          plugins: {
+            title: {
+              display: true,
+              text: 'Chart.js Line Chart - Cubic interpolation mode'
+            },
+          },
+           interaction: {
+                hoverRadius: 20,
+                intersect: false,
+                mode: 'index',
+            },
         }
-    });
+      };
+    new Chart(ctx,config)
 }
