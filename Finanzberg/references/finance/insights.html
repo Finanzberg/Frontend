@@ -52,7 +52,7 @@
             </header>
 
             <div id="hamburger_menu">
-                <a href="insight_overview.html" class="headerLink" style="text-decoration: underline;">Insights</a>
+                <a href="insight.html" class="headerLink" style="text-decoration: underline;">Insights</a>
                 <a href="contracts.html" class="headerLink">Contracts</a>
                 <a href="budgeting.html" class="headerLink">Budgeting</a>
                 <div>
@@ -81,7 +81,7 @@
 
             <!--Content-->
             <div id="contentdiv">
-
+                
 
 
 
@@ -92,8 +92,8 @@
                             onclick="closeModal('uploadModal')">✖</button></div>
                     <select id="uploadModal_bank_select">
                         <option value="">*choose*</option>
-                        <option value="CSV.Sparkasse">Sparkasse CSV</option>
-                        <option value="CSV.ApoBank">ApoBank CSV</option>
+                        <option value="Sparkasse">Sparkasse CSV</option>
+                        <option value="ApoBank">ApoBank CSV</option>
                     </select>
                     <div><input id="uploadModal_data" type="file" accept=".csv"></div>
                     <button onclick="upload()" id="uploadModal_button" class="primaryButton">Upload</button>
@@ -232,16 +232,44 @@
         overlay.classList.remove('active')
     }
 
+
+    let data = document.getElementById('uploadModal_data')
+    let csvData;
+        
+    data.addEventListener('change', async (event) => {
+        const files = event.srcElement.files;
+
+        const filePromises = Object.entries(files).map(item => {
+            return new Promise((resolve, reject) => {
+                const [index, file] = item
+                const reader = new FileReader();
+                reader.readAsBinaryString(file);
+                if (file.type.match('.csv')) {
+                    document.getElementById('uploadModal_ErrorMassage').innerHTML = ''
+
+                    reader.onload = function (event) {
+                        csvData = `data:${file.type};base64,${btoa(event.target.result)}`
+                        resolve()
+                    };
+                    reader.onerror = function () {
+                        alert("can't read the file");
+                        reject()
+                    };
+                } else {
+                    document.getElementById('uploadModal_ErrorMassage').innerHTML = 'pls select csv'
+                }
+            })
+        })
+    })
+
     //upload
     function upload() {
         document.getElementById('uploadModal_ErrorMassage').innerHTML = ''
         let bank = document.getElementById('uploadModal_bank_select').value
-        let data = document.getElementById('uploadModal_data')
         if (!bank == '') {
-            console.log('asdad')
             let json = {
                 "bank": bank,
-                "csv": data
+                "csv": csvData
             }
             let jsonStr = JSON.stringify(json);
             send("POST", "data/upload/csv", jsonStr, function (response, status) {
