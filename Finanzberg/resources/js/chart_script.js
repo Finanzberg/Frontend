@@ -6,13 +6,14 @@ send("GET", "data/saldo", {}, function(response, status){
         let name = date.toLocaleDateString() + " " + date.toLocaleTimeString()
         dates.push(name)
     })
-    createChart(data.dates, data.data)
+    createChart(dates, data.data)
 })
 
 
 
 function createChart(labels, amounts) {
     const ctx = document.getElementById('myChart').getContext('2d');
+    console.log(amounts)
     const config = {
         type: 'line',
         data:{
@@ -20,39 +21,33 @@ function createChart(labels, amounts) {
             datasets: [
                 {
                     label: "Saldo", 
-                    data: amounts
+                    data: amounts,
+                    borderWidth: 1,
                 }
             ]
         },
         options: {
           responsive: true,
+          scales: {
+                x: {
+                    ticks: {
+                        autoSkip: true,
+                        maxTicksLimit: document.defaultView.innerWidth / 200
+                    }
+                },
+            },
           plugins: {
             title: {
               display: true,
               text: 'Chart.js Line Chart - Cubic interpolation mode'
             },
           },
-          interaction: {
-            intersect: false,
-          },
-          scales: {
-            x: {
-              display: true,
-              title: {
-                display: true
-              }
+           interaction: {
+                hoverRadius: 20,
+                intersect: false,
+                mode: 'index',
             },
-            y: {
-              display: true,
-              title: {
-                display: true,
-                text: 'Value'
-              },
-              suggestedMin: -10,
-              suggestedMax: 200
-            }
-          }
-        },
+        }
       };
     new Chart(ctx,config)
 }
