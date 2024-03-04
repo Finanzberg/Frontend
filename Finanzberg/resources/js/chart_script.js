@@ -23,6 +23,8 @@ function createChart(labels, amounts) {
                     label: "Saldo", 
                     data: amounts,
                     borderWidth: 1,
+                    cubicInterpolationMode: 'monotone',
+                    tension: 0.4
                 }
             ]
         },
