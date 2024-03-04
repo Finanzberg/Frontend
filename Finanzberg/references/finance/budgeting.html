@@ -117,9 +117,16 @@
                     updateData()
                     function updateData() {
                         divElement.innerHTML = ''
-                        for (let index = 0; index < 5; index++) {
-                            addAccountToCanvis()
-                        }
+                        send("GET", "data/budgets", {}, function (response, status) {
+                            if (status === 200) {
+                                const parsedData = JSON.parse(response);
+                                parsedData.forEach(item => {
+                                    addAccountToCanvis(item.name, item.monthlyAmount, item.date, item.amount)
+                                });
+                            } else {
+                                alert('error')
+                            }
+                        })
 
                         //update rest
                         document.getElementById('restAmount').innerHTML
@@ -137,7 +144,7 @@
 
                 <!--addAccount Modal-->
                 <div class="modal" id="addAccountModal">
-                    <div class="modalTitel">Create New Subacount<button id="closeModal"
+                    <div class="modalTitel">Create New Subaccount<button id="closeModal"
                             onclick="closeModal('addAccountModal')">✖</button></div>
                     <input type="text" placeholder="name" id="addAccountModal1" />
                     <input type="number" min="0" placeholder="monthly balance" id="addAccountModal2" />
@@ -147,23 +154,23 @@
                 </div>
 
                 <script>
-                    function addAccount(){
+                    function addAccount() {
                         document.getElementById('uploadModal_ErrorMassage').innerHTML = ''
 
-                    let json = {
-                        "name": document.getElementById('addAccountModal1').value,
-                        "monthlyBalance": document.getElementById('addAccountModal2').value,
-                        "startDate": document.getElementById('addAccountModal3').value
-                    }
-                    let jsonStr = JSON.stringify(json);
-                    send("POST", "data/upload/csv", jsonStr, function (response, status) {
-                        if (status === 200) {
-                            closeModal('addAccountModal')
-                             updateData()
-                        } else {
-                            alert('error')
+                        let json = {
+                            "name": document.getElementById('addAccountModal1').value,
+                            "monthlyBalance": document.getElementById('addAccountModal2').value,
+                            "startDate": document.getElementById('addAccountModal3').value
                         }
-                    })
+                        let jsonStr = JSON.stringify(json);
+                        send("POST", "data/budget-create", jsonStr, function (response, status) {
+                            if (status === 200) {
+                                closeModal('addAccountModal')
+                                updateData()
+                            } else {
+                                alert('error')
+                            }
+                        })
                     }
 
                 </script>
