@@ -239,7 +239,7 @@ header {
     margin: 1.4em 0;
   }
   #cookiePopup button {
-    background-color: #6859fe;
+    background-color: var(--accent_color);
     border: none;
     color: #ffffff;
     font-size: 1.2em;
@@ -250,7 +250,7 @@ header {
     border-radius: 5px;
   }
   #cookiePopup a {
-    color: #6859fe;
+    color: var(--accent_color);
   }
   .hide {
     visibility: hidden;
