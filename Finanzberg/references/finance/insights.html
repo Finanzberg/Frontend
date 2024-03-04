@@ -248,7 +248,7 @@
                     document.getElementById('uploadModal_ErrorMassage').innerHTML = ''
 
                     reader.onload = function (event) {
-                        csvData = `data:${file.type};base64,${btoa(event.target.result)}`
+                        csvData = event.target.result
                         resolve()
                     };
                     reader.onerror = function () {
