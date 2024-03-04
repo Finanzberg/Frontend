@@ -1,3 +1,24 @@
+const zoomOptions = {
+    pan: {
+        enabled: true,
+        mode: 'x',
+        modifierKey: 'ctrl',
+    },
+    zoom: {
+        wheel: {
+            enabled: true,
+            modifierKey: 'shift'
+        },
+        drag: {
+            enabled: true,
+        },
+        pinch: {
+            enabled: true
+        },
+        mode: 'x',
+    }
+};
+
 send("GET", "data/saldo", {}, function (response, status) {
     const data = JSON.parse(response)
     let dates = [];
@@ -43,6 +64,7 @@ function createChart(labels, amounts) {
                     display: true,
                     text: 'Chart.js Line Chart - Cubic interpolation mode'
                 },
+                zoom: zoomOptions
             },
             interaction: {
                 hoverRadius: 20,
