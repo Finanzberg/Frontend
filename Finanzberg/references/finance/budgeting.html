@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../../resources/css/GeneralStylesheet.css" />
     <link rel="stylesheet" href="../../resources/css/budgeting.css" />
     <script>
-        checkSession()
+        //checkSession()
         load_profile_picture()
     </script>
 </head>
@@ -116,23 +116,33 @@
                     let divElement = document.getElementById('vituralSubaccounts_filldiv')
                     updateData()
                     function updateData() {
+                        let saldo;
+
                         divElement.innerHTML = ''
                         send("GET", "data/budgets", {}, function (response, status) {
                             if (status === 200) {
+                                console.log(response)
                                 const parsedData = JSON.parse(response);
+                                let sum = 0;
                                 parsedData.forEach(item => {
-                                    addAccountToCanvis(item.name, item.monthlyAmount, item.date, item.amount)
+                                    let date = new Date(item.startDate * 1000)
+                                    sum = sum + item.balance
+                                    addAccountToCanvis(item.name, item.monthlyBalance, date.toLocaleDateString(), item.balance)
                                 });
-                            } else {
+                                //update rest & saldo
+                                send("GET", "data/saldo", {}, function (response, status) {
+                                    const data = JSON.parse(response)
+                                    saldo = data.data[data.data.length - 1]
+                                    document.getElementById('SaldoAmount').innerHTML = saldo
+                                    document.getElementById('restAmount').innerHTML = saldo - sum
+                                });
+                            }
+                             else {
                                 alert('error')
                             }
                         })
 
-                        //update rest
-                        document.getElementById('restAmount').innerHTML
 
-                        //update saldo
-                        document.getElementById('SaldoAmount').innerHTML
 
                     }
                     function addAccountToCanvis(name, monthlyAmount, date, amount) {
