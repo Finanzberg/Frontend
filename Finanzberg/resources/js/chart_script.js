@@ -1,4 +1,4 @@
-send("GET", "data/saldo", {}, function(response, status){
+send("GET", "data/saldo", {}, function (response, status) {
     const data = JSON.parse(response)
     let dates = [];
     data.labels.forEach((value) => { // Only one graph is needed for the labels
@@ -10,17 +10,17 @@ send("GET", "data/saldo", {}, function(response, status){
 })
 
 
-
 function createChart(labels, amounts) {
     const ctx = document.getElementById('myChart').getContext('2d');
     console.log(amounts)
+    let chart;
     const config = {
         type: 'line',
-        data:{
+        data: {
             labels: labels,
             datasets: [
                 {
-                    label: "Saldo", 
+                    label: "Saldo",
                     data: amounts,
                     borderWidth: 1,
                     cubicInterpolationMode: 'monotone',
@@ -29,8 +29,8 @@ function createChart(labels, amounts) {
             ]
         },
         options: {
-          responsive: true,
-          scales: {
+            responsive: true,
+            scales: {
                 x: {
                     ticks: {
                         autoSkip: true,
@@ -38,18 +38,18 @@ function createChart(labels, amounts) {
                     }
                 },
             },
-          plugins: {
-            title: {
-              display: true,
-              text: 'Chart.js Line Chart - Cubic interpolation mode'
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Chart.js Line Chart - Cubic interpolation mode'
+                },
             },
-          },
-           interaction: {
+            interaction: {
                 hoverRadius: 20,
                 intersect: false,
                 mode: 'index',
             },
-        }
-      };
-    new Chart(ctx,config)
+        },
+    };
+   chart = new Chart(ctx, config);
 }

@@ -3,210 +3,238 @@
 
 <head>
     <title>Finanzberg - Insights</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="../../resources/images/general/logo/Finanzberg_logo.png" type="image/x-icon" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="../../resources/images/general/logo/Finanzberg_logo.png" type="image/x-icon"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet">
     <script src="../../resources/js/backend_connection.js"></script>
     <script src="../../resources/js/hash.js"></script>
     <script src="../../resources/js/cookies.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="../../resources/css/GeneralStylesheet.css" />
-    <link rel="stylesheet" href="../../resources/css/landingpage.css" />
+    <link rel="stylesheet" href="../../resources/css/GeneralStylesheet.css"/>
+    <link rel="stylesheet" href="../../resources/css/insights.css"/>
+    <script src="../../resources/js/chart_script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <script src="../../resources/js/insights.js"></script>
     <script>
         //checkSession()
         load_profile_picture()
+        load_table()
     </script>
-    <script src="../../resources/js/chart_script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
 </head>
 
 <body>
-    <div id="outercontainer">
-        <div id="innercontainer">
-            <!--Header-->
-            <header>
-                <div id="header_logo_div">
-                    <a href="../../index.html"><img src="../../resources/images/general/logo/Finanzberg_logo_NoText.png"
-                            height="30rem"></a>
-                    <a href="../../index.html">
-                        <div id="header_logo_titel">Finanzberg</div>
-                </div>
-                <div id="header_links_div">
-                    <a href="insights.html" class="header_link" style="text-decoration: underline;">Insights</a>
-                    <a href="contracts.html" class="header_link">Contracts</a>
-                    <a href="budgeting.html" class="header_link">Budgeting</a>
-                    <div>
-                        <button id="header_link_upload_button" onclick="openModal('uploadModal')">Upload</button>
-                    </div>
-                    <div>
-                        <button class="avatar" id="header_link_account" onclick="openModal('accountModal')"></button>
-                    </div>
-                </div>
-                <div id="header_links_div_small">
-                    <label class="hamburger_menu_button">
-                        <input id="hamburger_menu_checkbox" type="checkbox" onclick="hamburger_menu()">
-                    </label>
-                </div>
-            </header>
-
-            <div id="hamburger_menu">
-                <a href="insight.html" class="headerLink" style="text-decoration: underline;">Insights</a>
-                <a href="contracts.html" class="headerLink">Contracts</a>
-                <a href="budgeting.html" class="headerLink">Budgeting</a>
+<div id="outercontainer">
+    <div id="innercontainer">
+        <!--Header-->
+        <header>
+            <div id="header_logo_div">
+                <a href="../../index.html"><img src="../../resources/images/general/logo/Finanzberg_logo_NoText.png"
+                                                height="30rem"></a>
+                <a href="../../index.html">
+                    <div id="header_logo_titel">Finanzberg</div>
+            </div>
+            <div id="header_links_div">
+                <a href="insights.html" class="header_link" style="text-decoration: underline;">Insights</a>
+                <a href="contracts.html" class="header_link">Contracts</a>
+                <a href="budgeting.html" class="header_link">Budgeting</a>
                 <div>
                     <button id="header_link_upload_button" onclick="openModal('uploadModal')">Upload</button>
                 </div>
                 <div>
-                    <button id="header_link_account" onclick="openModal('accountModal')"></button>
+                    <button class="avatar" id="header_link_account" onclick="openModal('accountModal')"></button>
                 </div>
+            </div>
+            <div id="header_links_div_small">
+                <label class="hamburger_menu_button">
+                    <input id="hamburger_menu_checkbox" type="checkbox" onclick="hamburger_menu()">
+                </label>
+            </div>
+        </header>
+
+        <div id="hamburger_menu">
+            <a href="insight.html" class="headerLink" style="text-decoration: underline;">Insights</a>
+            <a href="contracts.html" class="headerLink">Contracts</a>
+            <a href="budgeting.html" class="headerLink">Budgeting</a>
+            <div>
+                <button id="header_link_upload_button" onclick="openModal('uploadModal')">Upload</button>
+            </div>
+            <div>
+                <button id="header_link_account" onclick="openModal('accountModal')"></button>
+            </div>
+        </div>
+        <script>
+            document.getElementById('hamburger_menu').style.display = 'none'
+
+            function hamburger_menu() {
+                if (document.getElementById("hamburger_menu").style.display === 'none') {
+                    document.getElementById('hamburger_menu').style.display = 'flex'
+                } else {
+                    document.getElementById('hamburger_menu').style.display = 'none'
+                }
+            }
+
+            window.addEventListener('resize', function (event) {
+                document.getElementById('hamburger_menu').style.display = 'none'
+                document.getElementById('hamburger_menu_checkbox').checked = false
+            }, true);
+        </script>
+
+        <!--Content-->
+        <div id="contentdiv">
+            <canvas id="myChart"></canvas>
+
+            <div>
+                <div class="insight">
+                    <table class="insight-table" id="table">
+                        <tr class="ignore-delete">
+                            <th>Datum</th>
+                            <th>Id</th>
+                            <th>Bank</th>
+                            <th>Transaktion</th>
+                            <th>Saldo</th>
+                            <th>Kategorie</th>
+                            <th>Beschreibung</th>
+                        </tr>
+                        <tr id="insight-example"></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!--upload Modal-->
+            <div class="modal" id="uploadModal">
+                <div class="modalTitel">Upload Bank Statements
+                    <button id="closeModal"
+                            onclick="closeModal('uploadModal')">✖
+                    </button>
+                </div>
+                <select id="uploadModal_bank_select">
+                    <option value="">*choose*</option>
+                    <option value="Sparkasse">Sparkasse CSV</option>
+                    <option value="ApoBank">ApoBank CSV</option>
+                </select>
+                <div><input id="uploadModal_data" type="file" accept=".csv"></div>
+                <button onclick="upload()" id="uploadModal_button" class="primaryButton">Upload</button>
+                <div id="uploadModal_ErrorMassage"></div>
+            </div>
+
+            <!--Account Modal-->
+            <div class="modal" id="accountModal">
+                <div class="modalTitel">Account Settings
+                    <button id="closeModal"
+                            onclick="closeModal('accountModal')">✖
+                    </button>
+                </div>
+                <div id="account_details">
+                    <div>
+                        <div onclick="closeModal('accountModal'), openModal('nameModal')" id="Account_Name_div">
+                            <div id="Account_Name">[name]</div>
+                        </div>
+                        <div onclick="closeModal('accountModal'), openModal('passwordModal')" id="Account_Name_div">
+                            <div id="Account_email">[email]</div>
+                            🔑
+                        </div>
+                    </div>
+                    <input type="file" id="imgupload" style="display:none"/>
+                    <button class="avatar" onclick="imgupload()" id="OpenImgUpload"></button>
+                    <script> function imgupload() {
+                        document.getElementById('imgupload').click()
+                    }</script>
+                </div>
+                <!--<button onclick="updateAccount()" id="accountModalUpdateButton" class="primaryButton">Update Account</button>-->
+                <button onclick="logout()" id="accountModallogoutButton" class="secondaryButton">Log Out</button>
+                <button onclick="closeModal('accountModal'), openModal('delModal')" id="accountModalDelButton"
+                        class="secondaryButton">Delete Account
+                </button>
+                <div id="accountModalErrorMassage"></div>
             </div>
             <script>
-                document.getElementById('hamburger_menu').style.display = 'none'
-
-                function hamburger_menu() {
-                    if (document.getElementById("hamburger_menu").style.display === 'none') {
-                        document.getElementById('hamburger_menu').style.display = 'flex'
-                    } else {
-                        document.getElementById('hamburger_menu').style.display = 'none'
-                    }
-                }
-
-                window.addEventListener('resize', function (event) {
-                    document.getElementById('hamburger_menu').style.display = 'none'
-                    document.getElementById('hamburger_menu_checkbox').checked = false
-                }, true);
+                var j = JSON.parse(getCookie('user'))
+                document.getElementById('Account_Name').innerHTML = j.name
+                document.getElementById('Account_email').innerHTML = j.email
             </script>
 
-            <!--Content-->
-            <div id="contentdiv">
-                <canvas id="myChart"></canvas>
-                <script src="chart-script.js"></script>
-
-
-
-
-
-                <!--upload Modal-->
-                <div class="modal" id="uploadModal">
-                    <div class="modalTitel">Upload Bank Statements<button id="closeModal"
-                            onclick="closeModal('uploadModal')">✖</button></div>
-                    <select id="uploadModal_bank_select">
-                        <option value="">*choose*</option>
-                        <option value="Sparkasse">Sparkasse CSV</option>
-                        <option value="ApoBank">ApoBank CSV</option>
-                    </select>
-                    <div><input id="uploadModal_data" type="file" accept=".csv"></div>
-                    <button onclick="upload()" id="uploadModal_button" class="primaryButton">Upload</button>
-                    <div id="uploadModal_ErrorMassage"></div>
+            <!--del Modal-->
+            <div class="modal" id="delModal">
+                <div class="modalTitel">Confirm Deletion</div>
+                <input type="password" placeholder="password" id="accountModalDelPassword"/>
+                <div>
+                    <button onclick="closeModal('delModal'), openModal('accountModal')"
+                            id="accountModalDelCancelButton" class="secondaryButton">Cancel
+                    </button>
+                    <button onclick="delAccount()" id="accountModalDelButton2" class="secondaryButton">Confirm
+                        Delete
+                    </button>
                 </div>
-
-                <!--Account Modal-->
-                <div class="modal" id="accountModal">
-                    <div class="modalTitel">Account Settings<button id="closeModal"
-                            onclick="closeModal('accountModal')">✖</button>
-                    </div>
-                    <div id="account_details">
-                        <div>
-                            <div onclick="closeModal('accountModal'), openModal('nameModal')" id="Account_Name_div">
-                                <div id="Account_Name">[name]</div>
-                            </div>
-                            <div onclick="closeModal('accountModal'), openModal('passwordModal')" id="Account_Name_div">
-                                <div id="Account_email">[email]</div>🔑
-                            </div>
-                        </div>
-                        <input type="file" id="imgupload" style="display:none" />
-                        <button class="avatar" onclick="imgupload()" id="OpenImgUpload"></button>
-                        <script> function imgupload() { document.getElementById('imgupload').click() }</script>
-                    </div>
-                    <!--<button onclick="updateAccount()" id="accountModalUpdateButton" class="primaryButton">Update Account</button>-->
-                    <button onclick="logout()" id="accountModallogoutButton" class="secondaryButton">Log Out</button>
-                    <button onclick="closeModal('accountModal'), openModal('delModal')" id="accountModalDelButton"
-                        class="secondaryButton">Delete Account</button>
-                    <div id="accountModalErrorMassage"></div>
+                <div id="delModalErrorMassage"></div>
+            </div>
+            <!--name Modal-->
+            <div class="modal" id="nameModal">
+                <div class="modalTitel">Change Username</div>
+                <input type="text" placeholder="name" id="updateName"/>
+                <div>
+                    <button onclick="closeModal('nameModal'), openModal('accountModal')"
+                            id="accountModalDelCancelButton" class="secondaryButton">Cancel
+                    </button>
+                    <button onclick="closeModal('nameModal'), openModal('accountModal'), updateName()"
+                            id="accountModalNameButton" class="primaryButton">Confirm Update
+                    </button>
                 </div>
-                <script>
-                    var j = JSON.parse(getCookie('user'))
-                    document.getElementById('Account_Name').innerHTML = j.name
-                    document.getElementById('Account_email').innerHTML = j.email
-                </script>
-
-                <!--del Modal-->
-                <div class="modal" id="delModal">
-                    <div class="modalTitel">Confirm Deletion</div>
-                    <input type="password" placeholder="password" id="accountModalDelPassword" />
-                    <div>
-                        <button onclick="closeModal('delModal'), openModal('accountModal')"
-                            id="accountModalDelCancelButton" class="secondaryButton">Cancel</button>
-                        <button onclick="delAccount()" id="accountModalDelButton2" class="secondaryButton">Confirm
-                            Delete</button>
-                    </div>
-                    <div id="delModalErrorMassage"></div>
+                <div id="delModalErrorMassage"></div>
+            </div>
+            <!--password Modal-->
+            <div class="modal" id="passwordModal">
+                <div class="modalTitel">Change Password</div>
+                <input type="password" placeholder="Passwort" id="updatePassword"/>
+                <div>
+                    <button onclick="closeModal('passwordModal'), openModal('accountModal')"
+                            id="accountModalDelCancelButton" class="secondaryButton">Cancel
+                    </button>
+                    <button onclick="updatePassword()" id="accountModalNameButton" class="primaryButton">Confirm
+                        Update
+                    </button>
                 </div>
-                <!--name Modal-->
-                <div class="modal" id="nameModal">
-                    <div class="modalTitel">Change Username</div>
-                    <input type="text" placeholder="name" id="updateName" />
-                    <div>
-                        <button onclick="closeModal('nameModal'), openModal('accountModal')"
-                            id="accountModalDelCancelButton" class="secondaryButton">Cancel</button>
-                        <button onclick="closeModal('nameModal'), openModal('accountModal'), updateName()"
-                            id="accountModalNameButton" class="primaryButton">Confirm Update</button>
-                    </div>
-                    <div id="delModalErrorMassage"></div>
-                </div>
-                <!--password Modal-->
-                <div class="modal" id="passwordModal">
-                    <div class="modalTitel">Change Password</div>
-                    <input type="password" placeholder="Passwort" id="updatePassword" />
-                    <div>
-                        <button onclick="closeModal('passwordModal'), openModal('accountModal')"
-                            id="accountModalDelCancelButton" class="secondaryButton">Cancel</button>
-                        <button onclick="updatePassword()" id="accountModalNameButton" class="primaryButton">Confirm
-                            Update</button>
-                    </div>
-                    <div id="delModalErrorMassage"></div>
-                </div>
+                <div id="delModalErrorMassage"></div>
             </div>
         </div>
     </div>
-    </div>
+</div>
 
-    <!--Footer-->
-    <footer>
-        <div id="footer_logo_div">
-            <div id="footer_logo">
-                <a href="../../index.html"><img src="../../resources/images/general/logo/Finanzberg_logo.png"
-                        height="60rem">
-            </div>
-            <div>Your Wealth, Simplified</div>
+<!--Footer-->
+<footer>
+    <div id="footer_logo_div">
+        <div id="footer_logo">
+            <a href="../../index.html"><img src="../../resources/images/general/logo/Finanzberg_logo.png"
+                                            height="60rem">
         </div>
-        <div id="footer_links_div">
-            <div style="margin-left: 0;">
-                <div class="footer_links_header">Projekt</div>
-                <div><a href="https://github.com/Finanzberg">About</a></div>
-                <div><a href="https://github.com/orgs/Finanzberg/people">Team</a></div>
-                <div><a href="https://github.com/Finanzberg">GitHub</a></div>
-            </div>
-            <div>
-                <div class="footer_links_header">Services</div>
-                <div><a href="insights.html">Insights</a></div>
-                <div><a href="contracts.html">Contracts</a></div>
-                <div><a href="budgeting.html">Budgeting</a></div>
-            </div>
-            <div>
-                <div class="footer_links_header">Info & Legal</div>
-                <div><a href="https://status.finanzberg.online/" target="_blank">Status</a></div>
-                <div><a href="../privacy.html">Privacy</a></div>
-                <div><a href="../rights.html">Rights</a></div>
-            </div>
+        <div>Your Wealth, Simplified</div>
+    </div>
+    <div id="footer_links_div">
+        <div style="margin-left: 0;">
+            <div class="footer_links_header">Projekt</div>
+            <div><a href="https://github.com/Finanzberg">About</a></div>
+            <div><a href="https://github.com/orgs/Finanzberg/people">Team</a></div>
+            <div><a href="https://github.com/Finanzberg">GitHub</a></div>
         </div>
-    </footer>
-    <div id="overlay"></div>
+        <div>
+            <div class="footer_links_header">Services</div>
+            <div><a href="insights.html">Insights</a></div>
+            <div><a href="contracts.html">Contracts</a></div>
+            <div><a href="budgeting.html">Budgeting</a></div>
+        </div>
+        <div>
+            <div class="footer_links_header">Info & Legal</div>
+            <div><a href="https://status.finanzberg.online/" target="_blank">Status</a></div>
+            <div><a href="../privacy.html">Privacy</a></div>
+            <div><a href="../rights.html">Rights</a></div>
+        </div>
+    </div>
+</footer>
+<div id="overlay"></div>
 </body>
 
 <script>
@@ -240,7 +268,7 @@
 
     let data = document.getElementById('uploadModal_data')
     let csvData;
-        
+
     data.addEventListener('change', async (event) => {
         const files = event.srcElement.files;
 
@@ -284,7 +312,7 @@
                     alert('error')
                 }
             })
-        }else {
+        } else {
             document.getElementById('uploadModal_ErrorMassage').innerHTML = 'choose a bank'
         }
     }
@@ -322,6 +350,7 @@
             }
         })
     }
+
     function updateName() {
         let name = document.getElementById('updateName').value
         let json = {

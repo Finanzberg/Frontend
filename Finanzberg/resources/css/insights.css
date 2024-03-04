@@ -1,0 +1,32 @@
+.insight {
+    background-color: white;
+    color: black;
+    height: fit-content;
+    font-size: 1em;
+    border-radius: 3px;
+    text-align: center;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2em;
+    margin-bottom: 5em;
+}
+
+#insight-example {
+    visibility: hidden;
+}
+
+table {
+    table-layout: fixed;
+    min-width: 80em;
+    border-collapse: collapse;
+    border: 3px solid var(--accent_color);
+    border-radius: 3px;
+}
+
+thead {
+    width: 30em;
+}
+
+th, td {
+    padding: 5px;
+}
