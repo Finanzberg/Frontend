@@ -466,4 +466,21 @@ select{
     input {
         margin-left: .5rem;
     }
+
+    #closeModal{
+        top: 2px;
+        right: 2px;
+    }
+    #loginButton {
+        width: auto;
+    }
+    #accountModalDelCancelButton{
+        width: 49%;
+    }
+    #accountModalNameButton{
+        width: 49%;
+    }
+    #accountModalDelButton2{
+        width: 49%;
+    }
 }
