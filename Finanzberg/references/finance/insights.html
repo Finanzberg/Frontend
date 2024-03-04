@@ -402,7 +402,6 @@
         let jsonStr = JSON.stringify(json);
         send("POST", "account/delete", jsonStr, function (response, status) {
             if (status === 200) {
-                up
                 deleteCookie('session')
                 deleteCookie('user')
                 window.location.href = "../../index.html"
