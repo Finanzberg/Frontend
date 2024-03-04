@@ -448,15 +448,15 @@ select{
     background-repeat: no-repeat;
 }
 
-@media screen and (max-width: 1220px) {  
+@media screen and (max-width: 1000px) {  
     .modal {
         position: fixed;
         top: 0%;
         left: 0%;
-        width: 100vw;
+        width: 96vw;
         height: 100vh;
         transform: translate(0,0) scale(0);
-        padding: 0rem;
+        padding: 1rem;
     }
     
     .modal.active {
