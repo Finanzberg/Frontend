@@ -1,0 +1,83 @@
+:root{
+    --planebackground: rgb(243, 243, 243);
+    --divbackground: rgb(221, 221, 221);
+}
+
+#outercontainer {
+    background-color: var(--planebackground);
+}
+
+
+#accountSaldo_outerDiv{
+    background-color: var(--planebackground);
+    border-bottom: 2px solid rgb(161, 161, 161);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+#vituralSubaccounts{
+    background-color: var(--planebackground);
+}
+
+#vituralSubaccounts_Header{
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem;
+    margin-right: 3rem;
+}
+
+#vituralSubaccounts_HeaderText{
+    font-size: x-large;
+    font-weight: 600;
+}
+
+#addAccountButton{
+    width: 41px;
+    height: 41px;
+    background-color: transparent;
+    border-radius: 0.5rem;
+    border-color: #24242459;
+    border-style: solid;
+    font-size: x-large;
+    font-weight: 600;
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+
+.account{
+    padding: 1rem;
+    background-color: var(--divbackground);
+    border-radius: .6rem;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 3rem;
+    margin-left: 3rem;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.342);
+}
+
+.amount{
+    display: flex;
+}
+
+#vituralSubaccounts_restAccout{
+    margin-bottom: 2rem;
+}
+
+#vituralSubaccounts_filldiv{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+
+#account_details{
+    display: flex;
+    gap: 1rem;
+}
+
+#name{
+    font-weight: 800;
+}

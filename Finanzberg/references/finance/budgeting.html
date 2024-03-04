@@ -15,7 +15,7 @@
     <script src="../../resources/js/hash.js"></script>
     <script src="../../resources/js/cookies.js"></script>
     <link rel="stylesheet" href="../../resources/css/GeneralStylesheet.css" />
-    <link rel="stylesheet" href="../../resources/css/landingpage.css" />
+    <link rel="stylesheet" href="../../resources/css/budgeting.css" />
     <script>
         //checkSession()
         load_profile_picture()
@@ -81,7 +81,92 @@
 
             <!--Content-->
             <div id="contentdiv">
-                
+
+                <div id="accountSaldo_outerDiv">
+                    <div class="account">
+                        <p id="name">Saldo</p>
+                        <div class="amount">
+                            <p id="SaldoAmount">[amount]</p>
+                            <p>€</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="vituralSubaccounts">
+                    <div id="vituralSubaccounts_Header">
+                        <p id="vituralSubaccounts_HeaderText">Vitural Subaccounts </p>
+                        <button onclick="openModal('addAccountModal')" id="addAccountButton">+</button>
+                    </div>
+                    <div>
+                        <div>
+                            <div id="vituralSubaccounts_restAccout" class="account">
+                                <p id="name">Rest</p>
+                                <div class="amount">
+                                    <p id="restAmount">[amount]</p>
+                                    <p>€</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="vituralSubaccounts_filldiv">
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    let divElement = document.getElementById('vituralSubaccounts_filldiv')
+                    updateData()
+                    function updateData() {
+                        divElement.innerHTML = ''
+                        for (let index = 0; index < 5; index++) {
+                            addAccountToCanvis()
+                        }
+
+                        //update rest
+                        document.getElementById('restAmount').innerHTML
+
+                        //update saldo
+                        document.getElementById('SaldoAmount').innerHTML
+
+                    }
+                    function addAccountToCanvis(name, monthlyAmount, date, amount) {
+                        divElement.innerHTML += " <div class='account'><div id='account_details'><p id='name'>" + name + "</p><p>" + monthlyAmount + "</p> • <p>" + date + " </p></div><div class='amount'><p>" + amount + "</p><p>€</p></div></div>"
+                    }
+                </script>
+
+
+
+                <!--addAccount Modal-->
+                <div class="modal" id="addAccountModal">
+                    <div class="modalTitel">Create New Subacount<button id="closeModal"
+                            onclick="closeModal('addAccountModal')">✖</button></div>
+                    <input type="text" placeholder="name" id="addAccountModal1" />
+                    <input type="number" min="0" placeholder="monthly balance" id="addAccountModal2" />
+                    <input type="month" placeholder="startDate" id="addAccountModal3" />
+                    <button onclick="addAccount()" id="uploadModal_button" class="primaryButton">Add</button>
+                    <div id="uploadModal_ErrorMassage"></div>
+                </div>
+
+                <script>
+                    function addAccount(){
+                        document.getElementById('uploadModal_ErrorMassage').innerHTML = ''
+
+                    let json = {
+                        "name": document.getElementById('addAccountModal1').value,
+                        "monthlyBalance": document.getElementById('addAccountModal2').value,
+                        "startDate": document.getElementById('addAccountModal3').value
+                    }
+                    let jsonStr = JSON.stringify(json);
+                    send("POST", "data/upload/csv", jsonStr, function (response, status) {
+                        if (status === 200) {
+                            closeModal('addAccountModal')
+                             updateData()
+                        } else {
+                            alert('error')
+                        }
+                    })
+                    }
+
+                </script>
 
 
 
@@ -235,7 +320,7 @@
 
     let data = document.getElementById('uploadModal_data')
     let csvData;
-        
+
     data.addEventListener('change', async (event) => {
         const files = event.srcElement.files;
 
@@ -279,7 +364,7 @@
                     alert('error')
                 }
             })
-        }else {
+        } else {
             document.getElementById('uploadModal_ErrorMassage').innerHTML = 'choose a bank'
         }
     }
